@@ -3,14 +3,14 @@ Simple UIAlertController wrapper.
 
 Usage examples:
 
-![simulator screen shot mar 11 2016 9 05 19 pm](https://cloud.githubusercontent.com/assets/4093007/13720976/18193c28-e7cd-11e5-97c7-98d6a2993bc1.png)
+![simulator screen shot mar 11 2016 9 05 19 pm](https://cloud.githubusercontent.com/assets/4093007/13720976/18193c28-e7cd-11e5-97c7-98d6a2993bc1.png | width=320)
 
 ````swift
 V77AlertHandler.displayAlert(title: "Title", message: "Message")
 ````
 Presents alert with provided title, message, and an empty cancel button.
 
-![simulator screen shot mar 11 2016 9 05 28 pm](https://cloud.githubusercontent.com/assets/4093007/13720977/1bc88c70-e7cd-11e5-98af-1f693f16188f.png)
+![simulator screen shot mar 11 2016 9 05 28 pm](https://cloud.githubusercontent.com/assets/4093007/13720977/1bc88c70-e7cd-11e5-98af-1f693f16188f.png | width=320)
 
 ````swift
 let alertController = V77AlertHandler.displayAlert(
