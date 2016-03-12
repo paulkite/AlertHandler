@@ -14,6 +14,8 @@
 		8E17D7011C938A2100775325 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E17D6FF1C938A2100775325 /* LaunchScreen.storyboard */; };
 		8E17D70C1C938A2100775325 /* V77AlertHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17D70B1C938A2100775325 /* V77AlertHandlerTests.swift */; };
 		8E17D7171C938A2100775325 /* V77AlertHandlerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17D7161C938A2100775325 /* V77AlertHandlerUITests.swift */; };
+		8E17D7251C938A7600775325 /* V77AlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17D7241C938A7600775325 /* V77AlertHandler.swift */; };
+		8E17D7261C938A7600775325 /* V77AlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E17D7241C938A7600775325 /* V77AlertHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,7 @@
 		8E17D7121C938A2100775325 /* V77AlertHandlerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = V77AlertHandlerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E17D7161C938A2100775325 /* V77AlertHandlerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V77AlertHandlerUITests.swift; sourceTree = "<group>"; };
 		8E17D7181C938A2100775325 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E17D7241C938A7600775325 /* V77AlertHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V77AlertHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,7 @@
 				8E17D6FD1C938A2100775325 /* Assets.xcassets */,
 				8E17D6FF1C938A2100775325 /* LaunchScreen.storyboard */,
 				8E17D7021C938A2100775325 /* Info.plist */,
+				8E17D7241C938A7600775325 /* V77AlertHandler.swift */,
 			);
 			path = V77AlertHandler;
 			sourceTree = "<group>";
@@ -257,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E17D6F91C938A2100775325 /* ViewController.swift in Sources */,
+				8E17D7251C938A7600775325 /* V77AlertHandler.swift in Sources */,
 				8E17D6F71C938A2100775325 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E17D7261C938A7600775325 /* V77AlertHandler.swift in Sources */,
 				8E17D70C1C938A2100775325 /* V77AlertHandlerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

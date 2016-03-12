@@ -10,27 +10,55 @@ import XCTest
 @testable import V77AlertHandler
 
 class V77AlertHandlerTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+    func testAlertPopulatesCorrectly() {
+        let title = "Title"
+        let message = "Message"
+        let actions = [
+            UIAlertAction(title: "First", style: .Default, handler: nil),
+        UIAlertAction(title: "First", style: .Default, handler: nil)
+        ]
+        let textFieldHandlers: [V77AlertTextFieldHandler] = [
+            {$0.placeholder = "placeholder"},
+            {$0.secureTextEntry = true}
+        ]
+        
+        let alertController = V77AlertHandler.displayAlert(
+            title: title,
+            message: message,
+            actions: actions,
+            textFieldHandlers: textFieldHandlers
+        )
+        
+        XCTAssertEqual(alertController?.title, title)
+        XCTAssertEqual(alertController?.title, title)
+        
+        for index in 0..<(alertController!.actions.count - 1) {
+            let action = alertController?.actions[index]
+            
+            XCTAssertEqual(action!.title, actions[index].title)
+            XCTAssertEqual(action!.style, actions[index].style)
         }
+        
+        XCTAssertEqual(alertController?.textFields?.first?.placeholder, "placeholder")
+        XCTAssertEqual(alertController?.textFields?.last?.secureTextEntry, true)
     }
     
+    func testAlertDealloc() {
+        weak var alertController: UIAlertController?
+        
+        autoreleasepool {
+            let controller = V77AlertHandler.displayAlert(title: "Title", message: "Message")
+            alertController = controller
+            
+            let expectation = self.expectationWithDescription("Alert Dismissal Completed Expecation")
+            
+            alertController?.dismissViewControllerAnimated(true, completion: {
+                expectation.fulfill()
+            })
+            
+            self.waitForExpectationsWithTimeout(3.0, handler: nil)
+        }
+        
+        XCTAssertNil(alertController)
+    }
 }

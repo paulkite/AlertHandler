@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="V77AlertHandler" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,8 +17,111 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V77AlertHandler Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CN7-vV-Jkh">
+                                <rect key="frame" x="185" y="92" width="230.5" height="25.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="skS-iY-QMb">
+                                <rect key="frame" x="20" y="117.5" width="560" height="71.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YlT-au-rkL">
+                                <rect key="frame" x="20" y="189" width="560" height="222"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zkq-wT-8yy">
+                                        <rect key="frame" x="0.0" y="8" width="560" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="present_alert_button"/>
+                                        <state key="normal" title="Present Alert"/>
+                                        <connections>
+                                            <action selector="handleButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aXR-D0-QFs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaX-0l-DRz">
+                                        <rect key="frame" x="0.0" y="46" width="560" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="present_alert_with_action_button"/>
+                                        <state key="normal" title="Present Alert w/ Action"/>
+                                        <connections>
+                                            <action selector="handleButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ouO-ft-NOU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QhG-tZ-LaO">
+                                        <rect key="frame" x="0.0" y="84" width="560" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="present_alert_with_action_plus_textfield_button"/>
+                                        <state key="normal" title="Present Alert w/ Action + Text Field"/>
+                                        <connections>
+                                            <action selector="handleButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="svl-Qq-rKS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4XP-Cc-Wg7">
+                                        <rect key="frame" x="0.0" y="146" width="560" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="present_action_sheet_button"/>
+                                        <state key="normal" title="Present Action Sheet"/>
+                                        <connections>
+                                            <action selector="handleButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N2E-mZ-ClY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMe-nB-ZvR">
+                                        <rect key="frame" x="0.0" y="184" width="560" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="present_action_sheet_button_with_action_button"/>
+                                        <state key="normal" title="Present Action Sheet w/ Action"/>
+                                        <connections>
+                                            <action selector="handleButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sDz-QR-nnH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="TaX-0l-DRz" firstAttribute="leading" secondItem="YlT-au-rkL" secondAttribute="leading" id="0Ht-Uz-UfU"/>
+                                    <constraint firstAttribute="trailing" secondItem="TaX-0l-DRz" secondAttribute="trailing" id="0j5-nT-Al9"/>
+                                    <constraint firstItem="Zkq-wT-8yy" firstAttribute="leading" secondItem="YlT-au-rkL" secondAttribute="leading" id="4y4-0j-DWH"/>
+                                    <constraint firstItem="QhG-tZ-LaO" firstAttribute="leading" secondItem="YlT-au-rkL" secondAttribute="leading" id="5II-30-Caf"/>
+                                    <constraint firstItem="TaX-0l-DRz" firstAttribute="top" secondItem="Zkq-wT-8yy" secondAttribute="bottom" constant="8" id="5lb-JQ-BYb"/>
+                                    <constraint firstItem="BMe-nB-ZvR" firstAttribute="top" secondItem="4XP-Cc-Wg7" secondAttribute="bottom" constant="8" id="9xa-Dw-5rY"/>
+                                    <constraint firstItem="4XP-Cc-Wg7" firstAttribute="top" secondItem="QhG-tZ-LaO" secondAttribute="bottom" constant="32" id="CG4-WF-WUI"/>
+                                    <constraint firstItem="BMe-nB-ZvR" firstAttribute="leading" secondItem="YlT-au-rkL" secondAttribute="leading" id="Jbq-JN-Ztb"/>
+                                    <constraint firstItem="Zkq-wT-8yy" firstAttribute="top" secondItem="YlT-au-rkL" secondAttribute="topMargin" id="Mon-bL-Dx1"/>
+                                    <constraint firstItem="QhG-tZ-LaO" firstAttribute="top" secondItem="TaX-0l-DRz" secondAttribute="bottom" constant="8" id="Otl-bC-jUZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="BMe-nB-ZvR" secondAttribute="trailing" id="Rez-3S-ra3"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zkq-wT-8yy" secondAttribute="trailing" id="bvo-sl-mtv"/>
+                                    <constraint firstItem="4XP-Cc-Wg7" firstAttribute="leading" secondItem="YlT-au-rkL" secondAttribute="leading" id="fIx-XN-GQQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="4XP-Cc-Wg7" secondAttribute="trailing" id="gDv-x6-ljQ"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="BMe-nB-ZvR" secondAttribute="bottom" id="mEs-aF-GYN"/>
+                                    <constraint firstAttribute="trailing" secondItem="QhG-tZ-LaO" secondAttribute="trailing" id="xPF-1b-FvE"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l18-Yw-78R">
+                                <rect key="frame" x="20" y="20" width="560" height="72"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YlT-au-rkL" firstAttribute="top" secondItem="skS-iY-QMb" secondAttribute="bottom" id="0sD-KS-g5G"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="l18-Yw-78R" secondAttribute="trailing" id="4kj-Vh-RGs"/>
+                            <constraint firstItem="skS-iY-QMb" firstAttribute="top" secondItem="CN7-vV-Jkh" secondAttribute="bottom" id="6po-hM-cWw"/>
+                            <constraint firstItem="YlT-au-rkL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="9LN-gf-K2b"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="skS-iY-QMb" secondAttribute="leading" id="IIv-35-bMw"/>
+                            <constraint firstItem="l18-Yw-78R" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Jfr-Rc-BDG"/>
+                            <constraint firstItem="CN7-vV-Jkh" firstAttribute="top" secondItem="l18-Yw-78R" secondAttribute="bottom" id="LjT-no-o1W"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="l18-Yw-78R" secondAttribute="leading" id="XcP-Cc-YpA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="skS-iY-QMb" secondAttribute="trailing" id="a4R-b9-XZ3"/>
+                            <constraint firstItem="l18-Yw-78R" firstAttribute="height" secondItem="skS-iY-QMb" secondAttribute="height" id="asE-Js-RAA"/>
+                            <constraint firstItem="YlT-au-rkL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dfK-r8-beB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YlT-au-rkL" secondAttribute="trailing" id="mYI-Jn-94i"/>
+                            <constraint firstItem="CN7-vV-Jkh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qD7-yA-0Pr"/>
+                            <constraint firstItem="YlT-au-rkL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rd8-Mo-ied"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="presentActionSheetButton" destination="4XP-Cc-Wg7" id="Xbt-Li-vJb"/>
+                        <outlet property="presentActionSheetWithActionButton" destination="BMe-nB-ZvR" id="Vs3-V3-RKc"/>
+                        <outlet property="presentAlertButton" destination="Zkq-wT-8yy" id="NML-Fb-Flh"/>
+                        <outlet property="presentAlertWithActionButton" destination="TaX-0l-DRz" id="EGS-sV-xxZ"/>
+                        <outlet property="presentAlertWithActionPlusTextFieldButton" destination="QhG-tZ-LaO" id="7fH-ve-2AR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
