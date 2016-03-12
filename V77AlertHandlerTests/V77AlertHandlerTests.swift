@@ -15,7 +15,7 @@ class V77AlertHandlerTests: XCTestCase {
         let message = "Message"
         let actions = [
             UIAlertAction(title: "First", style: .Default, handler: nil),
-        UIAlertAction(title: "First", style: .Default, handler: nil)
+            UIAlertAction(title: "Second", style: .Default, handler: nil)
         ]
         let textFieldHandlers: [V77AlertTextFieldHandler] = [
             {$0.placeholder = "placeholder"},
@@ -29,7 +29,6 @@ class V77AlertHandlerTests: XCTestCase {
             textFieldHandlers: textFieldHandlers
         )
         
-        XCTAssertEqual(alertController?.title, title)
         XCTAssertEqual(alertController?.title, title)
         
         for index in 0..<(alertController!.actions.count - 1) {
