@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import UIKit
+
 @testable import V77AlertHandler
 
 class V77AlertHandlerTests: XCTestCase {

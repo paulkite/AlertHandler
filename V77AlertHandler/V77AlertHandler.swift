@@ -9,7 +9,7 @@
 import UIKit
 import ObjectiveC
 
-typealias V77AlertTextFieldHandler = ((UITextField) -> Void)
+public typealias V77AlertTextFieldHandler = ((UITextField) -> Void)
 
 extension UIAlertController {
     private struct AssociatedKeys {
@@ -41,8 +41,8 @@ extension UIAlertController {
     }
 }
 
-class V77AlertHandler: NSObject {
-    class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+public class V77AlertHandler {
+    public class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
@@ -53,7 +53,7 @@ class V77AlertHandler: NSObject {
         )
     }
     
-    class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: Array<V77AlertTextFieldHandler>? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+    public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: Array<V77AlertTextFieldHandler>? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
@@ -95,9 +95,20 @@ class V77AlertHandler: NSObject {
         return alertController
     }
     
-    class func cancelAction(handler: ((UIAlertAction) -> Void)?) -> UIAlertAction {
+    private class func UIKitLocalizedString(string: String) -> String {
+        let bundle = NSBundle(forClass: UIApplication.self)
+        let value = bundle.localizedStringForKey(string, value: string, table: nil)
+        
+        if value.characters.count > 0 {
+            return value
+        }
+        
+        return string
+    }
+    
+    public class func cancelAction(handler: ((UIAlertAction) -> Void)?) -> UIAlertAction {
         return UIAlertAction(
-            title: NSLocalizedString("S_Cancel", comment: ""),
+            title: self.UIKitLocalizedString("Cancel"),
             style: .Cancel,
             handler: handler
         )

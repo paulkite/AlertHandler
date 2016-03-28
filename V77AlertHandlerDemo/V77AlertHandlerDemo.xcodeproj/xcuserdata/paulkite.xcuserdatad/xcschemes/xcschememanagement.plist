@@ -4,35 +4,35 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>V77AlertHandler.xcscheme_^#shared#^_</key>
+		<key>V77AlertHandlerDemo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+		<key>V77AlertHandlerDemoUITests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>V77AlertHandlerTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>8E17D6F21C938A2100775325</key>
+		<key>8E6103C01C9A3FC40006AA4A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8E17D7061C938A2100775325</key>
+		<key>8E6103FF1C9A485B0006AA4A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8E17D7111C938A2100775325</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8E6103961C9A33850006AA4A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8E6103EF1C9A447E0006AA4A</key>
+		<key>8E61040D1C9A48B30006AA4A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

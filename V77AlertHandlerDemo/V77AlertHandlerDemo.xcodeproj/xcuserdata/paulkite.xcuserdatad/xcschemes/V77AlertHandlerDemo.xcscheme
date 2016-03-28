@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8E17D6F21C938A2100775325"
-               BuildableName = "V77AlertHandler.app"
-               BlueprintName = "V77AlertHandler"
-               ReferencedContainer = "container:V77AlertHandler.xcodeproj">
+               BlueprintIdentifier = "8E6103C01C9A3FC40006AA4A"
+               BuildableName = "V77AlertHandlerDemo.app"
+               BlueprintName = "V77AlertHandlerDemo"
+               ReferencedContainer = "container:V77AlertHandlerDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8E17D7061C938A2100775325"
+               BlueprintIdentifier = "8E6103FF1C9A485B0006AA4A"
                BuildableName = "V77AlertHandlerTests.xctest"
                BlueprintName = "V77AlertHandlerTests"
-               ReferencedContainer = "container:V77AlertHandler.xcodeproj">
+               ReferencedContainer = "container:V77AlertHandlerDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8E17D7111C938A2100775325"
-               BuildableName = "V77AlertHandlerUITests.xctest"
-               BlueprintName = "V77AlertHandlerUITests"
-               ReferencedContainer = "container:V77AlertHandler.xcodeproj">
+               BlueprintIdentifier = "8E61040D1C9A48B30006AA4A"
+               BuildableName = "V77AlertHandlerDemoUITests.xctest"
+               BlueprintName = "V77AlertHandlerDemoUITests"
+               ReferencedContainer = "container:V77AlertHandlerDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8E17D6F21C938A2100775325"
-            BuildableName = "V77AlertHandler.app"
-            BlueprintName = "V77AlertHandler"
-            ReferencedContainer = "container:V77AlertHandler.xcodeproj">
+            BlueprintIdentifier = "8E6103C01C9A3FC40006AA4A"
+            BuildableName = "V77AlertHandlerDemo.app"
+            BlueprintName = "V77AlertHandlerDemo"
+            ReferencedContainer = "container:V77AlertHandlerDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8E17D6F21C938A2100775325"
-            BuildableName = "V77AlertHandler.app"
-            BlueprintName = "V77AlertHandler"
-            ReferencedContainer = "container:V77AlertHandler.xcodeproj">
+            BlueprintIdentifier = "8E6103C01C9A3FC40006AA4A"
+            BuildableName = "V77AlertHandlerDemo.app"
+            BlueprintName = "V77AlertHandlerDemo"
+            ReferencedContainer = "container:V77AlertHandlerDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8E17D6F21C938A2100775325"
-            BuildableName = "V77AlertHandler.app"
-            BlueprintName = "V77AlertHandler"
-            ReferencedContainer = "container:V77AlertHandler.xcodeproj">
+            BlueprintIdentifier = "8E6103C01C9A3FC40006AA4A"
+            BuildableName = "V77AlertHandlerDemo.app"
+            BlueprintName = "V77AlertHandlerDemo"
+            ReferencedContainer = "container:V77AlertHandlerDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
