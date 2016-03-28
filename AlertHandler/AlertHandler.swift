@@ -9,7 +9,7 @@
 import UIKit
 import ObjectiveC
 
-public typealias AlertTextFieldHandler = ((UITextField) -> Void)
+public typealias AlertTextFieldHandler = (@convention(block) (UITextField) -> Void)
 
 extension UIAlertController {
     private struct AssociatedKeys {
@@ -46,7 +46,7 @@ extension UIAlertController {
     }
 }
 
-public class AlertHandler {
+@objc public class AlertHandler: NSObject {
     /**
      Presents an action sheet with the supplied arguments.
 
@@ -59,7 +59,7 @@ public class AlertHandler {
      - Returns: The presented UIAlertController instance.
      */
 
-    public class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, fromView: UIView? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+    @objc public class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, fromView: UIView? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
@@ -83,7 +83,7 @@ public class AlertHandler {
      - Returns: The presented UIAlertController instance.
      */
     
-    public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: Array<AlertTextFieldHandler>? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+    @objc public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: Array<AlertTextFieldHandler>? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
