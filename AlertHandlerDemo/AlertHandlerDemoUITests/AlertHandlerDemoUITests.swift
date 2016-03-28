@@ -42,7 +42,12 @@ class AlertHandlerDemoUITests: XCTestCase {
     func testActionSheet() {
         let app = XCUIApplication()
         app.buttons["present_action_sheet_button"].tap()
-        app.sheets["Title"].buttons["Cancel"].tap()
+
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+            app.sheets["Title"].buttons["Cancel"].tap()
+        } else {
+            app.childrenMatchingType(.Window).elementBoundByIndex(3).childrenMatchingType(.Other).elementBoundByIndex(1).childrenMatchingType(.Other).elementBoundByIndex(1).childrenMatchingType(.Image).elementBoundByIndex(0).tap()
+        }
     }
     
     func testActionSheetWithAction() {

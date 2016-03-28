@@ -42,14 +42,15 @@ class ViewController: UIViewController {
             )
             
         } else if sender as? UIButton == self.presentActionSheetButton {
-            AlertHandler.displayActionSheet(title: "Title", message: "Message")
+            AlertHandler.displayActionSheet(title: "Title", message: "Message", actions: nil, fromView: sender as? UIView)
         } else if sender as? UIButton == self.presentActionSheetWithActionButton {
             AlertHandler.displayActionSheet(
                 title: "Title",
                 message: "Message",
                 actions: [
                     UIAlertAction(title: "Title", style: .Default, handler: nil)
-                ]
+                ],
+                fromView: sender as? UIView
             )
         }
     }

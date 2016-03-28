@@ -19,7 +19,7 @@ class AlertHandlerTests: XCTestCase {
             UIAlertAction(title: "First", style: .Default, handler: nil),
             UIAlertAction(title: "Second", style: .Default, handler: nil)
         ]
-        let textFieldHandlers: [V77AlertTextFieldHandler] = [
+        let textFieldHandlers: [AlertTextFieldHandler] = [
             {$0.placeholder = "placeholder"},
             {$0.secureTextEntry = true}
         ]

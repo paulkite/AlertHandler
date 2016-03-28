@@ -9,7 +9,7 @@
 import UIKit
 import ObjectiveC
 
-public typealias V77AlertTextFieldHandler = ((UITextField) -> Void)
+public typealias AlertTextFieldHandler = ((UITextField) -> Void)
 
 extension UIAlertController {
     private struct AssociatedKeys {
@@ -31,6 +31,11 @@ extension UIAlertController {
         self.displayWindow()?.windowLevel = (UIWindowLevelAlert + 1.0)
         
         self.displayWindow()?.makeKeyAndVisible()
+
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad && self.preferredStyle == .ActionSheet {
+            self.popoverPresentationController?.sourceView = self.displayWindow()?.rootViewController?.view
+        }
+
         self.displayWindow()?.rootViewController?.presentViewController(self, animated: animated, completion: completion)
     }
     
@@ -42,30 +47,65 @@ extension UIAlertController {
 }
 
 public class AlertHandler {
-    public class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+    /**
+     Presents an action sheet with the supplied arguments.
+
+     - Parameter title: The title to display.
+     - Parameter message: The message to display.
+     - Parameter actions: An array of UIAlertActions.
+     - Parameter fromView: The view to present the action sheet from. (Required by iPad. Otherwise ignored.)
+     - Parameter tintColor: The tint color to apply to the actions.
+
+     - Returns: The presented UIAlertController instance.
+     */
+
+    public class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, fromView: UIView? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
             alertStyle: .ActionSheet,
             actions: actions,
             textFieldHandlers: nil,
+            fromView: fromView,
             tintColor: tintColor
         )
     }
+
+    /**
+     Presents an alert with the supplied arguments.
+
+     - Parameter title: The title to display.
+     - Parameter message: The message to display.
+     - Parameter actions: An array of UIAlertActions.
+     - Parameter textFieldHandlers: An array of AlertTextFieldHandler closures to configure each text field.
+     - Parameter tintColor: The tint color to apply to the actions.
+
+     - Returns: The presented UIAlertController instance.
+     */
     
-    public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: Array<V77AlertTextFieldHandler>? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+    public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: Array<AlertTextFieldHandler>? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
             alertStyle: .Alert,
             actions: actions,
             textFieldHandlers: textFieldHandlers,
+            fromView:  nil,
             tintColor: tintColor
         )
     }
     
-    private class func display(title title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: Array<V77AlertTextFieldHandler>?, tintColor: UIColor?) -> UIAlertController? {
+    private class func display(title title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: Array<AlertTextFieldHandler>?, fromView: UIView?, tintColor: UIColor?) -> UIAlertController? {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
+
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad && alertStyle == .ActionSheet {
+            guard let presentFromView = fromView, let presenter = alertController.popoverPresentationController else {
+                return nil
+            }
+
+            presenter.sourceRect = alertController.view.convertRect(presentFromView.bounds, fromView: presentFromView)
+            alertController.modalPresentationStyle = .Popover
+        }
         
         if let handlers = textFieldHandlers {
             for handler in handlers {
