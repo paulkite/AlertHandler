@@ -97,8 +97,8 @@ extension AlertHandler {
      - Returns: The presented UIAlertController instance.
      */
 
-    @objc public class func obj_displayActionSheet(title title: String?, message: String?) -> UIAlertController? {
-        return self.obj_displayActionSheet(title: title, message: message, actions: nil)
+    @objc public class func objc_displayActionSheet(title title: String?, message: String?) -> UIAlertController? {
+        return self.objc_displayActionSheet(title: title, message: message, actions: nil)
     }
 
     /**
@@ -111,8 +111,8 @@ extension AlertHandler {
      - Returns: The presented UIAlertController instance.
      */
 
-    @objc public class func obj_displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]?) -> UIAlertController? {
-        return self.obj_displayActionSheet(title: title, message: message, actions: actions, fromView: nil)
+    @objc public class func objc_displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]?) -> UIAlertController? {
+        return self.objc_displayActionSheet(title: title, message: message, actions: actions, fromView: nil)
     }
 
     /**
@@ -126,8 +126,8 @@ extension AlertHandler {
      - Returns: The presented UIAlertController instance.
      */
 
-    @objc public class func obj_displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]?, fromView: UIView?) -> UIAlertController? {
-        return self.obj_displayActionSheet(title: title, message: message, actions: actions, fromView: fromView, tintColor: nil)
+    @objc public class func objc_displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]?, fromView: UIView?) -> UIAlertController? {
+        return self.objc_displayActionSheet(title: title, message: message, actions: actions, fromView: fromView, tintColor: nil)
     }
 
     /**
@@ -142,7 +142,7 @@ extension AlertHandler {
      - Returns: The presented UIAlertController instance.
      */
 
-    @objc public class func obj_displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]?, fromView: UIView?, tintColor: UIColor?) -> UIAlertController? {
+    @objc public class func objc_displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]?, fromView: UIView?, tintColor: UIColor?) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
