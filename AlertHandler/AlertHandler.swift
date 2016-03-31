@@ -23,57 +23,6 @@ extension UIAlertController {
     }
 }
 
-extension AlertHandler {
-    /**
-     Presents an alert with the supplied arguments.
-
-     - Parameter title: The title to display.
-     - Parameter message: The message to display.
-     - Parameter actions: An array of UIAlertActions.
-     - Parameter textFieldHandlerInfo: An array of dictionaries to configure each text field.
-     - Parameter tintColor: The tint color to apply to the actions.
-
-     - Returns: The presented UIAlertController instance.
-    */
-    
-    @objc public class func objc_displayAlert(title title: String?, message: String?) -> UIAlertController? {
-        return self.objc_displayAlert(title: title, message: message, actions: nil)
-    }
-
-    @objc public class func objc_displayAlert(title title: String?, message: String?, actions: [UIAlertAction]?) -> UIAlertController? {
-        return self.objc_displayAlert(title: title, message: message, actions: actions, textFieldHandlerInfo: nil)
-    }
-
-    @objc public class func objc_displayAlert(title title: String?, message: String?, actions: [UIAlertAction]?, textFieldHandlerInfo: [[String : AnyObject]]?) -> UIAlertController? {
-        return self.objc_displayAlert(title: title, message: message, actions: actions, textFieldHandlerInfo: textFieldHandlerInfo, tintColor: nil)
-    }
-
-    @objc public class func objc_displayAlert(title title: String?, message: String?, actions: [UIAlertAction]?, textFieldHandlerInfo: [[String : AnyObject]]?, tintColor: UIColor?) -> UIAlertController? {
-        let handlers = textFieldHandlerInfo?.reduce([AlertTextFieldHandler](), combine: { (aggregate, next) -> [AlertTextFieldHandler] in
-            var mutableAggregate = [AlertTextFieldHandler]()
-            mutableAggregate.appendContentsOf(aggregate)
-
-            mutableAggregate.append({ (textField: UITextField!) -> Void in
-                for (key, value) in next {
-                    textField.setValue(value, forKey: key)
-                }
-            })
-
-            return mutableAggregate
-        })
-
-        return self.display(
-            title: title,
-            message: message,
-            alertStyle: .Alert,
-            actions: actions,
-            textFieldHandlers: handlers,
-            fromView:  nil,
-            tintColor: tintColor
-        )
-    }
-}
-
 @objc public class AlertHandler: NSObject {
     /**
      Presents an action sheet with the supplied arguments.
@@ -87,7 +36,7 @@ extension AlertHandler {
      - Returns: The presented UIAlertController instance.
      */
 
-    @objc public class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, fromView: UIView? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+    @nonobjc public class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, fromView: UIView? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
@@ -123,7 +72,7 @@ extension AlertHandler {
         )
     }
     
-    private class func display(title title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: [AlertTextFieldHandler]?, fromView: UIView?, tintColor: UIColor?) -> UIAlertController? {
+    internal class func display(title title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: [AlertTextFieldHandler]?, fromView: UIView?, tintColor: UIColor?) -> UIAlertController? {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
 
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad && alertStyle == .ActionSheet {
