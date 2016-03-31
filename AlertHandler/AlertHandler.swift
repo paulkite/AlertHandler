@@ -34,9 +34,21 @@ extension AlertHandler {
      - Parameter tintColor: The tint color to apply to the actions.
 
      - Returns: The presented UIAlertController instance.
-     */
+    */
+    
+    @objc public class func objc_displayAlert(title title: String?, message: String?) -> UIAlertController? {
+        return self.objc_displayAlert(title: title, message: message, actions: nil)
+    }
 
-    @objc public class func objc_displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlerInfo: [[String : AnyObject]]? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+    @objc public class func objc_displayAlert(title title: String?, message: String?, actions: [UIAlertAction]?) -> UIAlertController? {
+        return self.objc_displayAlert(title: title, message: message, actions: actions, textFieldHandlerInfo: nil)
+    }
+
+    @objc public class func objc_displayAlert(title title: String?, message: String?, actions: [UIAlertAction]?, textFieldHandlerInfo: [[String : AnyObject]]?) -> UIAlertController? {
+        return self.objc_displayAlert(title: title, message: message, actions: actions, textFieldHandlerInfo: textFieldHandlerInfo, tintColor: nil)
+    }
+
+    @objc public class func objc_displayAlert(title title: String?, message: String?, actions: [UIAlertAction]?, textFieldHandlerInfo: [[String : AnyObject]]?, tintColor: UIColor?) -> UIAlertController? {
         let handlers = textFieldHandlerInfo?.reduce([AlertTextFieldHandler](), combine: { (aggregate, next) -> [AlertTextFieldHandler] in
             var mutableAggregate = [AlertTextFieldHandler]()
             mutableAggregate.appendContentsOf(aggregate)

@@ -33,8 +33,7 @@
     UIAlertController *alertController = [AlertHandler objc_displayAlertWithTitle:title
                                                                           message:message
                                                                           actions:actions
-                                                             textFieldHandlerInfo:textFieldHandlers
-                                                                        tintColor:nil];
+                                                             textFieldHandlerInfo:textFieldHandlers];
 
     XCTAssertEqual(alertController.title, title);
 
@@ -55,7 +54,7 @@
     __weak UIAlertController *alertController = nil;
 
     @autoreleasepool {
-        UIAlertController *controller = [AlertHandler objc_displayAlertWithTitle:@"Title" message:@"Message" actions:nil textFieldHandlerInfo:nil tintColor:nil];
+        UIAlertController *controller = [AlertHandler objc_displayAlertWithTitle:@"Title" message:@"Message"];
         alertController = controller;
 
         XCTestExpectation *expectation = [self expectationWithDescription:@"Alert Dismissal Completed Expecation"];
