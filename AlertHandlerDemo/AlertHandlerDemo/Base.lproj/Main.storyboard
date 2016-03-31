@@ -21,12 +21,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AlertHandler Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CN7-vV-Jkh">
                                 <rect key="frame" x="204" y="92" width="192.5" height="25.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="skS-iY-QMb">
                                 <rect key="frame" x="20" y="117" width="560" height="71.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YlT-au-rkL">
                                 <rect key="frame" x="20" y="189" width="560" height="222"/>
@@ -72,7 +72,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="TaX-0l-DRz" firstAttribute="leading" secondItem="YlT-au-rkL" secondAttribute="leading" id="0Ht-Uz-UfU"/>
                                     <constraint firstAttribute="trailing" secondItem="TaX-0l-DRz" secondAttribute="trailing" id="0j5-nT-Al9"/>
@@ -94,10 +94,10 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l18-Yw-78R">
                                 <rect key="frame" x="20" y="20" width="560" height="72"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YlT-au-rkL" firstAttribute="top" secondItem="skS-iY-QMb" secondAttribute="bottom" id="0sD-KS-g5G"/>
                             <constraint firstAttribute="trailingMargin" secondItem="l18-Yw-78R" secondAttribute="trailing" id="4kj-Vh-RGs"/>

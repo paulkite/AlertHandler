@@ -15,7 +15,11 @@ class ViewController: UIViewController {
     @IBOutlet var presentAlertWithActionPlusTextFieldButton: UIButton!
     @IBOutlet var presentActionSheetButton: UIButton!
     @IBOutlet var presentActionSheetWithActionButton: UIButton!
-    
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+
     @IBAction func handleButtonTap(sender: AnyObject) {
         if sender as? UIButton == self.presentAlertButton {
             AlertHandler.displayAlert(title: "Title", message: "Message")

@@ -9,40 +9,56 @@
 import UIKit
 import ObjectiveC
 
-public typealias AlertTextFieldHandler = (@convention(block) (UITextField) -> Void)
+public typealias AlertTextFieldHandler = ((UITextField!) -> Void)
 
 extension UIAlertController {
-    private struct AssociatedKeys {
-        static var displayWindowKey = "displayWindowKey"
-    }
-    
-    private func displayWindow() -> UIWindow? {
-        return objc_getAssociatedObject(self, &AssociatedKeys.displayWindowKey) as? UIWindow
-    }
-    
-    private func setDisplayWindow(window: UIWindow?) {
-        objc_setAssociatedObject(self, &AssociatedKeys.displayWindowKey, window, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-    }
-    
     private func displayAnimated(animated animated: Bool, completion: (() -> Void)?) {
-        self.setDisplayWindow(UIWindow(frame: UIScreen.mainScreen().bounds))
-        
-        self.displayWindow()?.rootViewController = UIViewController(nibName: nil, bundle: nil)
-        self.displayWindow()?.windowLevel = (UIWindowLevelAlert + 1.0)
-        
-        self.displayWindow()?.makeKeyAndVisible()
+        let displayWindow = UIApplication.sharedApplication().keyWindow
 
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad && self.preferredStyle == .ActionSheet {
-            self.popoverPresentationController?.sourceView = self.displayWindow()?.rootViewController?.view
+            self.popoverPresentationController?.sourceView = displayWindow?.rootViewController?.view
         }
 
-        self.displayWindow()?.rootViewController?.presentViewController(self, animated: animated, completion: completion)
+        displayWindow?.rootViewController?.presentViewController(self, animated: animated, completion: completion)
     }
-    
-    override public func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        self.setDisplayWindow(nil)
+}
+
+extension AlertHandler {
+    /**
+     Presents an alert with the supplied arguments.
+
+     - Parameter title: The title to display.
+     - Parameter message: The message to display.
+     - Parameter actions: An array of UIAlertActions.
+     - Parameter textFieldHandlerInfo: An array of dictionaries to configure each text field.
+     - Parameter tintColor: The tint color to apply to the actions.
+
+     - Returns: The presented UIAlertController instance.
+     */
+
+    @objc public class func objc_displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlerInfo: [[String : AnyObject]]? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+        let handlers = textFieldHandlerInfo?.reduce([AlertTextFieldHandler](), combine: { (aggregate, next) -> [AlertTextFieldHandler] in
+            var mutableAggregate = [AlertTextFieldHandler]()
+            mutableAggregate.appendContentsOf(aggregate)
+
+            mutableAggregate.append({ (textField: UITextField!) -> Void in
+                for (key, value) in next {
+                    textField.setValue(value, forKey: key)
+                }
+            })
+
+            return mutableAggregate
+        })
+
+        return self.display(
+            title: title,
+            message: message,
+            alertStyle: .Alert,
+            actions: actions,
+            textFieldHandlers: handlers,
+            fromView:  nil,
+            tintColor: tintColor
+        )
     }
 }
 
@@ -82,8 +98,8 @@ extension UIAlertController {
 
      - Returns: The presented UIAlertController instance.
      */
-    
-    @objc public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: Array<AlertTextFieldHandler>? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+
+    @nonobjc public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: [AlertTextFieldHandler]? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
@@ -95,7 +111,7 @@ extension UIAlertController {
         )
     }
     
-    private class func display(title title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: Array<AlertTextFieldHandler>?, fromView: UIView?, tintColor: UIColor?) -> UIAlertController? {
+    private class func display(title title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: [AlertTextFieldHandler]?, fromView: UIView?, tintColor: UIColor?) -> UIAlertController? {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
 
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad && alertStyle == .ActionSheet {
@@ -106,9 +122,9 @@ extension UIAlertController {
             presenter.sourceRect = alertController.view.convertRect(presentFromView.bounds, fromView: presentFromView)
             alertController.modalPresentationStyle = .Popover
         }
-        
-        if let handlers = textFieldHandlers {
-            for handler in handlers {
+
+        if let handlers = textFieldHandlers?.enumerate() {
+            for (_, handler) in handlers {
                 alertController.addTextFieldWithConfigurationHandler(handler)
             }
         }
