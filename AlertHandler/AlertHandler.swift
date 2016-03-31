@@ -9,7 +9,7 @@
 import UIKit
 import ObjectiveC
 
-public typealias AlertTextFieldHandler = ((UITextField!) -> Void)
+public typealias AlertTextFieldHandler = (@convention(block) (UITextField) -> Void)
 
 extension UIAlertController {
     private func displayAnimated(animated animated: Bool, completion: (() -> Void)?) {
