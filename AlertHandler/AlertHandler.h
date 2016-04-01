@@ -15,3 +15,6 @@ FOUNDATION_EXPORT double AlertHandlerVersionNumber;
 FOUNDATION_EXPORT const unsigned char AlertHandlerVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <AlertHandler/PublicHeader.h>
+
+//#import <AlertHandler/AlertHandler+ObjCAdditions.h>
+#import <AlertHandler/AlertTextFieldHandlerBridge.h>

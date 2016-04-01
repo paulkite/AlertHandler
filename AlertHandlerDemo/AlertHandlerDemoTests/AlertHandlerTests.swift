@@ -20,7 +20,8 @@ class AlertHandlerTests: XCTestCase {
             UIAlertAction(title: "Second", style: .Default, handler: nil)
         ]
         let textFieldHandlers: [AlertTextFieldHandler] = [
-            {$0.placeholder = "placeholder"},
+            {$0.placeholder = "placeholder"
+             $0.keyboardType = .URL},
             {$0.secureTextEntry = true}
         ]
         
@@ -40,8 +41,11 @@ class AlertHandlerTests: XCTestCase {
             XCTAssertEqual(action!.style, actions[index].style)
         }
         
-        XCTAssertEqual(alertController?.textFields?.first?.placeholder, "placeholder")
-        XCTAssertEqual(alertController?.textFields?.last?.secureTextEntry, true)
+        XCTAssertEqual(alertController!.textFields!.first!.placeholder, "placeholder")
+        XCTAssertEqual(alertController!.textFields!.first!.keyboardType, UIKeyboardType.URL)
+        XCTAssertTrue(alertController!.textFields!.last!.secureTextEntry)
+
+        alertController?.dismissViewControllerAnimated(false, completion: nil)
     }
     
     func testAlertDealloc() {

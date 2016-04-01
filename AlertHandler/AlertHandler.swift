@@ -9,8 +9,6 @@
 import UIKit
 import ObjectiveC
 
-public typealias AlertTextFieldHandler = (@convention(block) (UITextField) -> Void)
-
 extension UIAlertController {
     private func displayAnimated(animated animated: Bool, completion: (() -> Void)?) {
         let displayWindow = UIApplication.sharedApplication().keyWindow
@@ -20,6 +18,32 @@ extension UIAlertController {
         }
 
         displayWindow?.rootViewController?.presentViewController(self, animated: animated, completion: completion)
+    }
+}
+
+extension AlertHandler {
+    /**
+     Presents an alert with the supplied arguments.
+
+     - Parameter title: The title to display.
+     - Parameter message: The message to display.
+     - Parameter actions: An array of UIAlertActions.
+     - Parameter textFieldHandlers: An array of AlertTextFieldHandler closures to configure each text field.
+     - Parameter tintColor: The tint color to apply to the actions.
+
+     - Returns: The presented UIAlertController instance.
+     */
+
+    @objc public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]?, textFieldHandlerBridges: [AlertTextFieldHandlerBridge]?, tintColor: UIColor?) -> UIAlertController? {
+        return self.display(
+            title: title,
+            message: message,
+            alertStyle: .Alert,
+            actions: actions,
+            textFieldHandlers: textFieldHandlerBridges?.map({return $0.handler}),
+            fromView:  nil,
+            tintColor: tintColor
+        )
     }
 }
 
@@ -36,7 +60,7 @@ extension UIAlertController {
      - Returns: The presented UIAlertController instance.
      */
 
-    @nonobjc public class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, fromView: UIView? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+    @objc public class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, fromView: UIView? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
@@ -72,7 +96,7 @@ extension UIAlertController {
         )
     }
     
-    internal class func display(title title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: [AlertTextFieldHandler]?, fromView: UIView?, tintColor: UIColor?) -> UIAlertController? {
+    private class func display(title title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: [AlertTextFieldHandler]?, fromView: UIView?, tintColor: UIColor?) -> UIAlertController? {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
 
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad && alertStyle == .ActionSheet {
@@ -90,14 +114,10 @@ extension UIAlertController {
             }
         }
         
-        var hasCancelAction = false
-        
+        let hasCancelAction = actions?.contains({return $0.style == .Cancel}) ?? false
+
         if let actions = actions {
             for action in actions {
-                if action.style == .Cancel {
-                    hasCancelAction = true
-                }
-                
                 alertController.addAction(action)
             }
         }
@@ -107,9 +127,14 @@ extension UIAlertController {
         }
         
         alertController.view.tintColor = tintColor
-        alertController.displayAnimated(animated: true, completion: nil)
+
+        self.displayAlertController(alertController)
         
         return alertController
+    }
+
+    internal class func displayAlertController(controller: UIAlertController) {
+        controller.displayAnimated(animated: true, completion: nil)
     }
     
     private class func UIKitLocalizedString(string: String) -> String {

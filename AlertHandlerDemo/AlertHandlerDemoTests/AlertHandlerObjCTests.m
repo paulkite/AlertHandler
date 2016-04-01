@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 
+#import <AlertHandler/AlertHandler.h>
 #import <AlertHandler/AlertHandler-Swift.h>
 
 @interface AlertHandlerObjCTests : XCTestCase
@@ -25,15 +26,25 @@
         [UIAlertAction actionWithTitle:@"Second" style:UIAlertActionStyleDefault handler:nil]
     ];
 
-    NSArray<NSDictionary *> *textFieldHandlers = @[
-        @{@"placeholder" : @"placeholder"},
-        @{@"secureTextEntry" : @YES},
+    AlertTextFieldHandler placeHolderBlock = ^void(UITextField *textField) {
+        textField.placeholder = @"placeholder";
+        textField.keyboardType = UIKeyboardTypeURL;
+    };
+
+    AlertTextFieldHandler secureTextEntryBlock = ^void(UITextField *textField) {
+        textField.secureTextEntry = YES;
+    };
+
+    NSArray<AlertTextFieldHandlerBridge *> *textFieldHandlers = @[
+        [AlertTextFieldHandlerBridge bridgeWithHandler:placeHolderBlock],
+        [AlertTextFieldHandlerBridge bridgeWithHandler:secureTextEntryBlock]
     ];
 
-    UIAlertController *alertController = [AlertHandler objc_displayAlertWithTitle:title
-                                                                          message:message
-                                                                          actions:actions
-                                                             textFieldHandlerInfo:textFieldHandlers];
+    UIAlertController *alertController = [AlertHandler displayAlertWithTitle:title
+                                                                     message:message
+                                                                     actions:actions
+                                                     textFieldHandlerBridges:textFieldHandlers
+                                                                   tintColor:nil];
 
     XCTAssertEqual(alertController.title, title);
 
@@ -46,7 +57,10 @@
     }];
 
     XCTAssertEqual(alertController.textFields.firstObject.placeholder, @"placeholder");
-    XCTAssertEqual(alertController.textFields.lastObject.secureTextEntry, YES);
+    XCTAssertEqual(alertController.textFields.firstObject.keyboardType, UIKeyboardTypeURL);
+    XCTAssertTrue(alertController.textFields.lastObject.secureTextEntry);
+
+    [alertController dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)testAlertDealloc
@@ -54,7 +68,11 @@
     __weak UIAlertController *alertController = nil;
 
     @autoreleasepool {
-        UIAlertController *controller = [AlertHandler objc_displayAlertWithTitle:@"Title" message:@"Message"];
+        UIAlertController *controller = [AlertHandler displayAlertWithTitle:@"Title"
+                                                                    message:@"Message"
+                                                                    actions:nil
+                                                    textFieldHandlerBridges:nil
+                                                                  tintColor:nil];
         alertController = controller;
 
         XCTestExpectation *expectation = [self expectationWithDescription:@"Alert Dismissal Completed Expecation"];
