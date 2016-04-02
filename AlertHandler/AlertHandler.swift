@@ -17,7 +17,19 @@ extension UIAlertController {
             self.popoverPresentationController?.sourceView = displayWindow?.rootViewController?.view
         }
 
-        displayWindow?.rootViewController?.presentViewController(self, animated: animated, completion: completion)
+        var viewController = displayWindow?.rootViewController
+
+        if let navigationController = displayWindow?.rootViewController as? UINavigationController {
+            viewController = navigationController.visibleViewController
+        } else if let tabBarController = displayWindow?.rootViewController as? UITabBarController {
+            if let navigationController = tabBarController.selectedViewController as? UINavigationController {
+                viewController = navigationController.visibleViewController
+            } else {
+                viewController = tabBarController.selectedViewController
+            }
+        }
+
+        viewController?.presentViewController(self, animated: animated, completion: completion)
     }
 }
 

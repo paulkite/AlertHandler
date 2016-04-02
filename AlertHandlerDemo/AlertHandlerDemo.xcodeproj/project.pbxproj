@@ -17,6 +17,7 @@
 		8E6104031C9A485B0006AA4A /* AlertHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6104021C9A485B0006AA4A /* AlertHandlerTests.swift */; };
 		8E6104111C9A48B30006AA4A /* AlertHandlerDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6104101C9A48B30006AA4A /* AlertHandlerDemoUITests.swift */; };
 		8ED2FE391CAD087900C7CA1F /* AlertHandlerObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED2FE381CAD087900C7CA1F /* AlertHandlerObjCTests.m */; };
+		8ED2FE4F1CAF412500C7CA1F /* PresentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED2FE4E1CAF412500C7CA1F /* PresentedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		8E6104101C9A48B30006AA4A /* AlertHandlerDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHandlerDemoUITests.swift; sourceTree = "<group>"; };
 		8E6104121C9A48B30006AA4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8ED2FE381CAD087900C7CA1F /* AlertHandlerObjCTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertHandlerObjCTests.m; sourceTree = "<group>"; };
+		8ED2FE4E1CAF412500C7CA1F /* PresentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				8E6103D81C9A42DB0006AA4A /* Assets.xcassets */,
 				8E6103DA1C9A42DB0006AA4A /* LaunchScreen.storyboard */,
 				8E6103DC1C9A42DB0006AA4A /* Main.storyboard */,
+				8ED2FE4E1CAF412500C7CA1F /* PresentedViewController.swift */,
 				8E6103DE1C9A42DB0006AA4A /* ViewController.swift */,
 				8E6103D01C9A3FC40006AA4A /* Info.plist */,
 			);
@@ -281,6 +284,7 @@
 			files = (
 				8E6103E31C9A42DB0006AA4A /* ViewController.swift in Sources */,
 				8E6103DF1C9A42DB0006AA4A /* AppDelegate.swift in Sources */,
+				8ED2FE4F1CAF412500C7CA1F /* PresentedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

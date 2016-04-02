@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet var presentAlertWithActionPlusTextFieldButton: UIButton!
     @IBOutlet var presentActionSheetButton: UIButton!
     @IBOutlet var presentActionSheetWithActionButton: UIButton!
+    @IBOutlet var presentViewControllerButton: UIButton!
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
