@@ -40,13 +40,14 @@ extension AlertHandler {
      - Parameter title: The title to display.
      - Parameter message: The message to display.
      - Parameter actions: An array of UIAlertActions.
-     - Parameter textFieldHandlers: An array of AlertTextFieldHandler closures to configure each text field.
+     - Parameter textFieldHandlers: An array of AlertTextFieldHandlerBridge object containing AlertTextFieldHandler blocks to configure each text field.
      - Parameter tintColor: The tint color to apply to the actions.
+     - Parameter completion: Block to be executed once presentation completes.
 
      - Returns: The presented UIAlertController instance.
      */
 
-    @objc public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]?, textFieldHandlerBridges: [AlertTextFieldHandlerBridge]?, tintColor: UIColor?) -> UIAlertController? {
+    @objc public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]?, textFieldHandlerBridges: [AlertTextFieldHandlerBridge]?, tintColor: UIColor?, completion: (() -> Void)?) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
@@ -54,7 +55,8 @@ extension AlertHandler {
             actions: actions,
             textFieldHandlers: textFieldHandlerBridges?.map({return $0.handler}),
             fromView:  nil,
-            tintColor: tintColor
+            tintColor: tintColor,
+            completion: completion
         )
     }
 }
@@ -68,11 +70,12 @@ extension AlertHandler {
      - Parameter actions: An array of UIAlertActions.
      - Parameter fromView: The view to present the action sheet from. (Required by iPad. Otherwise ignored.)
      - Parameter tintColor: The tint color to apply to the actions.
+     - Parameter completion: Block to be executed once presentation completes.
 
      - Returns: The presented UIAlertController instance.
      */
 
-    @objc public class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, fromView: UIView? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+    @objc public class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, fromView: UIView? = nil, tintColor: UIColor? = nil, completion: (() -> Void)? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
@@ -80,7 +83,8 @@ extension AlertHandler {
             actions: actions,
             textFieldHandlers: nil,
             fromView: fromView,
-            tintColor: tintColor
+            tintColor: tintColor,
+            completion: completion
         )
     }
 
@@ -92,11 +96,12 @@ extension AlertHandler {
      - Parameter actions: An array of UIAlertActions.
      - Parameter textFieldHandlers: An array of AlertTextFieldHandler closures to configure each text field.
      - Parameter tintColor: The tint color to apply to the actions.
+     - Parameter completion: Block to be executed once presentation completes.
 
      - Returns: The presented UIAlertController instance.
      */
 
-    @nonobjc public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: [AlertTextFieldHandler]? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+    @nonobjc public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: [AlertTextFieldHandler]? = nil, tintColor: UIColor? = nil, completion: (() -> Void)? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
@@ -104,11 +109,12 @@ extension AlertHandler {
             actions: actions,
             textFieldHandlers: textFieldHandlers,
             fromView:  nil,
-            tintColor: tintColor
+            tintColor: tintColor,
+            completion: completion
         )
     }
     
-    private class func display(title title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: [AlertTextFieldHandler]?, fromView: UIView?, tintColor: UIColor?) -> UIAlertController? {
+    private class func display(title title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: [AlertTextFieldHandler]?, fromView: UIView?, tintColor: UIColor?, completion: (() -> Void)?) -> UIAlertController? {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
 
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad && alertStyle == .ActionSheet {
@@ -140,13 +146,9 @@ extension AlertHandler {
         
         alertController.view.tintColor = tintColor
 
-        self.displayAlertController(alertController)
+        alertController.displayAnimated(animated: true, completion: completion)
         
         return alertController
-    }
-
-    internal class func displayAlertController(controller: UIAlertController) {
-        controller.displayAnimated(animated: true, completion: nil)
     }
     
     private class func UIKitLocalizedString(string: String) -> String {

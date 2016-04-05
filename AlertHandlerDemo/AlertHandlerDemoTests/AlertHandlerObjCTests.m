@@ -44,7 +44,8 @@
                                                                      message:message
                                                                      actions:actions
                                                      textFieldHandlerBridges:textFieldHandlers
-                                                                   tintColor:nil];
+                                                                   tintColor:nil
+                                                                  completion:nil];
 
     XCTAssertEqual(alertController.title, title);
 
@@ -72,7 +73,8 @@
                                                                     message:@"Message"
                                                                     actions:nil
                                                     textFieldHandlerBridges:nil
-                                                                  tintColor:nil];
+                                                                  tintColor:nil
+                                                                 completion:nil];
         alertController = controller;
 
         XCTestExpectation *expectation = [self expectationWithDescription:@"Alert Dismissal Completed Expecation"];
