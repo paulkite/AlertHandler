@@ -29,6 +29,10 @@ extension UIAlertController {
             }
         }
 
+        if self.view.tintColor == nil {
+            self.view.tintColor = viewController?.view.tintColor
+        }
+
         viewController?.presentViewController(self, animated: animated, completion: completion)
     }
 }
