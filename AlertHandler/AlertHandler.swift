@@ -143,8 +143,6 @@ extension AlertHandler {
         if !hasCancelAction {
             alertController.addAction(self.cancelAction(nil))
         }
-        
-        alertController.view.tintColor = tintColor
 
         let alertCompletion = {[weak alertController] in
             if let completion = completion {
@@ -153,6 +151,8 @@ extension AlertHandler {
         }
 
         alertController.displayAnimated(animated: true, completion: alertCompletion)
+
+        alertController.view.tintColor = tintColor
         
         return alertController
     }
