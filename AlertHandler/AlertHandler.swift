@@ -10,7 +10,7 @@ import UIKit
 import ObjectiveC
 
 extension UIAlertController {
-    private func displayAnimated(animated animated: Bool, completion: (() -> Void)?) {
+    private func displayAnimated(animated animated: Bool, tintColor: UIColor?, completion: (() -> Void)?) {
         let displayWindow = UIApplication.sharedApplication().keyWindow
 
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad && self.preferredStyle == .ActionSheet {
@@ -29,11 +29,13 @@ extension UIAlertController {
             }
         }
 
-        if self.view.tintColor == nil {
-            self.view.tintColor = viewController?.view.tintColor
-        }
-
         viewController?.presentViewController(self, animated: animated, completion: completion)
+
+        if tintColor == nil {
+            self.view.tintColor = viewController?.view.tintColor
+        } else {
+            self.view.tintColor = tintColor
+        }
     }
 }
 
@@ -154,9 +156,7 @@ extension AlertHandler {
             }
         }
 
-        alertController.displayAnimated(animated: true, completion: alertCompletion)
-
-        alertController.view.tintColor = tintColor
+        alertController.displayAnimated(animated: true, tintColor: tintColor, completion: alertCompletion)
         
         return alertController
     }
