@@ -31,11 +31,7 @@ extension UIAlertController {
 
         viewController?.presentViewController(self, animated: animated, completion: completion)
 
-        if tintColor == nil {
-            self.view.tintColor = viewController?.view.tintColor
-        } else {
-            self.view.tintColor = tintColor
-        }
+        self.view.tintColor = tintColor
     }
 }
 
