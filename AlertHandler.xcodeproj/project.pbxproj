@@ -114,6 +114,7 @@
 				TargetAttributes = {
 					8E6103961C9A33850006AA4A = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -265,6 +266,7 @@
 				PRODUCT_NAME = AlertHandler;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
 				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";
@@ -289,6 +291,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = voodoo77.AlertHandler;
 				PRODUCT_NAME = AlertHandler;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
 				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";

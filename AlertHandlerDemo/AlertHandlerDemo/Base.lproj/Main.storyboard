@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="obk-mT-qT7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11185.3" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="obk-mT-qT7">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11151.4"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -13,8 +14,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="7dE-Iu-nV1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="E3D-8R-lrw" kind="relationship" relationship="viewControllers" id="3g2-OJ-0h7"/>
@@ -33,17 +34,15 @@
                         <viewControllerLayoutGuide type="bottom" id="YW5-NU-Wjr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="879-tx-Puw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="xsb-5J-dCq">
-                                <rect key="frame" x="20" y="166" width="560" height="268"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="xsb-5J-dCq">
+                                <frame key="frameInset" minX="20" minY="166" width="343" height="268"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2PJ-3t-WsX">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="106"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lG-Vm-m8B">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="present_alert_button"/>
                                                 <state key="normal" title="Present Alert"/>
                                                 <connections>
@@ -51,7 +50,6 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIV-aG-EPo">
-                                                <rect key="frame" x="0.0" y="38" width="560" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="present_alert_with_action_button"/>
                                                 <state key="normal" title="Present Alert w/ Action"/>
                                                 <connections>
@@ -59,7 +57,6 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIH-Tb-Ebk">
-                                                <rect key="frame" x="0.0" y="76" width="560" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="present_alert_with_action_plus_textfield_button"/>
                                                 <state key="normal" title="Present Alert w/ Action + Text Field"/>
                                                 <connections>
@@ -69,10 +66,8 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="U6B-oC-k49">
-                                        <rect key="frame" x="0.0" y="138" width="560" height="68"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8P-Af-mL8">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="present_action_sheet_button"/>
                                                 <state key="normal" title="Present Action Sheet"/>
                                                 <connections>
@@ -80,7 +75,6 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shc-AG-udM">
-                                                <rect key="frame" x="0.0" y="38" width="560" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="present_action_sheet_button_with_action_button"/>
                                                 <state key="normal" title="Present Action Sheet w/ Action"/>
                                                 <connections>
@@ -90,10 +84,8 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SOy-Ee-9TK">
-                                        <rect key="frame" x="0.0" y="238" width="560" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgZ-v7-QaO">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="present_view_controller_button"/>
                                                 <state key="normal" title="Present View Controller"/>
                                                 <connections>
@@ -105,7 +97,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YW5-NU-Wjr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xsb-5J-dCq" secondAttribute="bottom" id="8u1-2J-GHD"/>
                             <constraint firstItem="xsb-5J-dCq" firstAttribute="leading" secondItem="879-tx-Puw" secondAttribute="leadingMargin" id="Kdc-Z2-8Jp"/>
@@ -138,14 +130,13 @@
                         <viewControllerLayoutGuide type="bottom" id="MpD-NB-19a"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vOj-zS-RTA">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jO8-bx-F8M">
-                                <rect key="frame" x="20" y="266" width="560" height="68"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jO8-bx-F8M">
+                                <frame key="frameInset" minX="20" minY="266" width="343" height="68"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xW1-wH-Tc5">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
                                         <accessibility key="accessibilityConfiguration" identifier="present_alert_button"/>
                                         <state key="normal" title="Present Alert"/>
                                         <connections>
@@ -153,7 +144,6 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lcd-9r-yl5">
-                                        <rect key="frame" x="0.0" y="38" width="560" height="30"/>
                                         <accessibility key="accessibilityConfiguration" identifier="present_action_sheet_button"/>
                                         <state key="normal" title="Present Action Sheet"/>
                                         <connections>
@@ -163,7 +153,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jO8-bx-F8M" firstAttribute="centerX" secondItem="vOj-zS-RTA" secondAttribute="centerX" id="8XY-gx-bM0"/>
                             <constraint firstItem="jO8-bx-F8M" firstAttribute="centerY" secondItem="vOj-zS-RTA" secondAttribute="centerY" id="Iac-eM-Ghd"/>
@@ -197,7 +187,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="cLd-gp-4cT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="ixG-45-PP7" kind="relationship" relationship="rootViewController" id="8yF-QQ-rTg"/>
@@ -215,7 +205,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="M34-Lb-LCU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="QDe-Er-Gfq" kind="relationship" relationship="rootViewController" id="Sqk-Gk-EXD"/>

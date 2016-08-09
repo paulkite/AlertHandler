@@ -219,13 +219,16 @@
 				TargetAttributes = {
 					8E6103C01C9A3FC40006AA4A = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 					};
 					8E6103FF1C9A485B0006AA4A = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 8E6103C01C9A3FC40006AA4A;
 					};
 					8E61040D1C9A48B30006AA4A = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 8E6103C01C9A3FC40006AA4A;
 					};
 				};
@@ -436,6 +439,7 @@
 				PRODUCT_NAME = AlertHandlerDemo;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -449,6 +453,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = voodoo77.AlertHandlerDemo;
 				PRODUCT_NAME = AlertHandlerDemo;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -462,6 +467,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = voodoo77.AlertHandlerDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlertHandlerDemo.app/AlertHandlerDemo";
 			};
 			name = Debug;
@@ -475,6 +481,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = voodoo77.AlertHandlerDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlertHandlerDemo.app/AlertHandlerDemo";
 			};
 			name = Release;
@@ -486,6 +493,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = voodoo77.AlertHandlerDemoUITests;
 				PRODUCT_NAME = AlertHandlerDemo;
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = AlertHandlerDemo;
 				USES_XCTRUNNER = YES;
 				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
@@ -500,6 +508,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = voodoo77.AlertHandlerDemoUITests;
 				PRODUCT_NAME = AlertHandlerDemo;
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = AlertHandlerDemo;
 				USES_XCTRUNNER = YES;
 				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
