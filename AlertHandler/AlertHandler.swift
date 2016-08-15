@@ -9,40 +9,57 @@
 import UIKit
 import ObjectiveC
 
-public typealias AlertTextFieldHandler = (@convention(block) (UITextField) -> Void)
-
 extension UIAlertController {
-    private struct AssociatedKeys {
-        static var displayWindowKey = "displayWindowKey"
-    }
-    
-    private func displayWindow() -> UIWindow? {
-        return objc_getAssociatedObject(self, &AssociatedKeys.displayWindowKey) as? UIWindow
-    }
-    
-    private func setDisplayWindow(window: UIWindow?) {
-        objc_setAssociatedObject(self, &AssociatedKeys.displayWindowKey, window, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-    }
-    
-    private func displayAnimated(animated animated: Bool, completion: (() -> Void)?) {
-        self.setDisplayWindow(UIWindow(frame: UIScreen.mainScreen().bounds))
-        
-        self.displayWindow()?.rootViewController = UIViewController(nibName: nil, bundle: nil)
-        self.displayWindow()?.windowLevel = (UIWindowLevelAlert + 1.0)
-        
-        self.displayWindow()?.makeKeyAndVisible()
+    private func displayAnimated(animated animated: Bool, tintColor: UIColor?, completion: (() -> Void)?) {
+        let displayWindow = UIApplication.sharedApplication().keyWindow
 
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad && self.preferredStyle == .ActionSheet {
-            self.popoverPresentationController?.sourceView = self.displayWindow()?.rootViewController?.view
+            self.popoverPresentationController?.sourceView = displayWindow?.rootViewController?.view
         }
 
-        self.displayWindow()?.rootViewController?.presentViewController(self, animated: animated, completion: completion)
+        var viewController = displayWindow?.rootViewController
+
+        if let navigationController = displayWindow?.rootViewController as? UINavigationController {
+            viewController = navigationController.visibleViewController
+        } else if let tabBarController = displayWindow?.rootViewController as? UITabBarController {
+            if let navigationController = tabBarController.selectedViewController as? UINavigationController {
+                viewController = navigationController.visibleViewController
+            } else {
+                viewController = tabBarController.selectedViewController
+            }
+        }
+
+        viewController?.presentViewController(self, animated: animated, completion: completion)
+
+        self.view.tintColor = tintColor
     }
-    
-    override public func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        self.setDisplayWindow(nil)
+}
+
+extension AlertHandler {
+    /**
+     Presents an alert with the supplied arguments.
+
+     - Parameter title: The title to display.
+     - Parameter message: The message to display.
+     - Parameter actions: An array of UIAlertActions.
+     - Parameter textFieldHandlers: An array of AlertTextFieldHandlerBridge object containing AlertTextFieldHandler blocks to configure each text field.
+     - Parameter tintColor: The tint color to apply to the actions.
+     - Parameter completion: Block to be executed once presentation completes.
+
+     - Returns: The presented UIAlertController instance.
+     */
+
+    @objc public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]?, textFieldHandlerBridges: [AlertTextFieldHandlerBridge]?, tintColor: UIColor?, completion: ((UIAlertController?) -> Void)?) -> UIAlertController? {
+        return self.display(
+            title: title,
+            message: message,
+            alertStyle: .Alert,
+            actions: actions,
+            textFieldHandlers: textFieldHandlerBridges?.map({return $0.handler}),
+            fromView:  nil,
+            tintColor: tintColor,
+            completion: completion
+        )
     }
 }
 
@@ -55,11 +72,12 @@ extension UIAlertController {
      - Parameter actions: An array of UIAlertActions.
      - Parameter fromView: The view to present the action sheet from. (Required by iPad. Otherwise ignored.)
      - Parameter tintColor: The tint color to apply to the actions.
+     - Parameter completion: Block to be executed once presentation completes.
 
      - Returns: The presented UIAlertController instance.
      */
 
-    @objc public class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, fromView: UIView? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+    @objc public class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, fromView: UIView? = nil, tintColor: UIColor? = nil, completion: ((UIAlertController?) -> Void)? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
@@ -67,7 +85,8 @@ extension UIAlertController {
             actions: actions,
             textFieldHandlers: nil,
             fromView: fromView,
-            tintColor: tintColor
+            tintColor: tintColor,
+            completion: completion
         )
     }
 
@@ -79,11 +98,12 @@ extension UIAlertController {
      - Parameter actions: An array of UIAlertActions.
      - Parameter textFieldHandlers: An array of AlertTextFieldHandler closures to configure each text field.
      - Parameter tintColor: The tint color to apply to the actions.
+     - Parameter completion: Block to be executed once presentation completes.
 
      - Returns: The presented UIAlertController instance.
      */
-    
-    @objc public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: Array<AlertTextFieldHandler>? = nil, tintColor: UIColor? = nil) -> UIAlertController? {
+
+    @nonobjc public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: [AlertTextFieldHandler]? = nil, tintColor: UIColor? = nil, completion: ((UIAlertController?) -> Void)? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
@@ -91,11 +111,12 @@ extension UIAlertController {
             actions: actions,
             textFieldHandlers: textFieldHandlers,
             fromView:  nil,
-            tintColor: tintColor
+            tintColor: tintColor,
+            completion: completion
         )
     }
     
-    private class func display(title title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: Array<AlertTextFieldHandler>?, fromView: UIView?, tintColor: UIColor?) -> UIAlertController? {
+    private class func display(title title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: [AlertTextFieldHandler]?, fromView: UIView?, tintColor: UIColor?, completion: ((UIAlertController?) -> Void)?) -> UIAlertController? {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
 
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad && alertStyle == .ActionSheet {
@@ -106,21 +127,17 @@ extension UIAlertController {
             presenter.sourceRect = alertController.view.convertRect(presentFromView.bounds, fromView: presentFromView)
             alertController.modalPresentationStyle = .Popover
         }
-        
-        if let handlers = textFieldHandlers {
-            for handler in handlers {
+
+        if let handlers = textFieldHandlers?.enumerate() {
+            for (_, handler) in handlers {
                 alertController.addTextFieldWithConfigurationHandler(handler)
             }
         }
         
-        var hasCancelAction = false
-        
+        let hasCancelAction = actions?.contains({return $0.style == .Cancel}) ?? false
+
         if let actions = actions {
             for action in actions {
-                if action.style == .Cancel {
-                    hasCancelAction = true
-                }
-                
                 alertController.addAction(action)
             }
         }
@@ -128,9 +145,14 @@ extension UIAlertController {
         if !hasCancelAction {
             alertController.addAction(self.cancelAction(nil))
         }
-        
-        alertController.view.tintColor = tintColor
-        alertController.displayAnimated(animated: true, completion: nil)
+
+        let alertCompletion = {[weak alertController] in
+            if let completion = completion {
+                completion(alertController)
+            }
+        }
+
+        alertController.displayAnimated(animated: true, tintColor: tintColor, completion: alertCompletion)
         
         return alertController
     }

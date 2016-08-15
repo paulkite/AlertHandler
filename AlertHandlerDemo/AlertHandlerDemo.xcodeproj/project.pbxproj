@@ -16,6 +16,8 @@
 		8E6103E31C9A42DB0006AA4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6103DE1C9A42DB0006AA4A /* ViewController.swift */; };
 		8E6104031C9A485B0006AA4A /* AlertHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6104021C9A485B0006AA4A /* AlertHandlerTests.swift */; };
 		8E6104111C9A48B30006AA4A /* AlertHandlerDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6104101C9A48B30006AA4A /* AlertHandlerDemoUITests.swift */; };
+		8ED2FE391CAD087900C7CA1F /* AlertHandlerObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED2FE381CAD087900C7CA1F /* AlertHandlerObjCTests.m */; };
+		8ED2FE4F1CAF412500C7CA1F /* PresentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED2FE4E1CAF412500C7CA1F /* PresentedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		8E61040E1C9A48B30006AA4A /* AlertHandlerDemo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlertHandlerDemo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6104101C9A48B30006AA4A /* AlertHandlerDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHandlerDemoUITests.swift; sourceTree = "<group>"; };
 		8E6104121C9A48B30006AA4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8ED2FE381CAD087900C7CA1F /* AlertHandlerObjCTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertHandlerObjCTests.m; sourceTree = "<group>"; };
+		8ED2FE4E1CAF412500C7CA1F /* PresentedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 				8E6103D81C9A42DB0006AA4A /* Assets.xcassets */,
 				8E6103DA1C9A42DB0006AA4A /* LaunchScreen.storyboard */,
 				8E6103DC1C9A42DB0006AA4A /* Main.storyboard */,
+				8ED2FE4E1CAF412500C7CA1F /* PresentedViewController.swift */,
 				8E6103DE1C9A42DB0006AA4A /* ViewController.swift */,
 				8E6103D01C9A3FC40006AA4A /* Info.plist */,
 			);
@@ -129,6 +134,7 @@
 		8E6104011C9A485B0006AA4A /* AlertHandlerDemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				8ED2FE381CAD087900C7CA1F /* AlertHandlerObjCTests.m */,
 				8E6104021C9A485B0006AA4A /* AlertHandlerTests.swift */,
 				8E6104041C9A485B0006AA4A /* Info.plist */,
 			);
@@ -207,19 +213,22 @@
 		8E6103B91C9A3FC40006AA4A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Voodoo77 Studios, Inc.";
 				TargetAttributes = {
 					8E6103C01C9A3FC40006AA4A = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 					};
 					8E6103FF1C9A485B0006AA4A = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 8E6103C01C9A3FC40006AA4A;
 					};
 					8E61040D1C9A48B30006AA4A = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 8E6103C01C9A3FC40006AA4A;
 					};
 				};
@@ -278,6 +287,7 @@
 			files = (
 				8E6103E31C9A42DB0006AA4A /* ViewController.swift in Sources */,
 				8E6103DF1C9A42DB0006AA4A /* AppDelegate.swift in Sources */,
+				8ED2FE4F1CAF412500C7CA1F /* PresentedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E6104031C9A485B0006AA4A /* AlertHandlerTests.swift in Sources */,
+				8ED2FE391CAD087900C7CA1F /* AlertHandlerObjCTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +439,7 @@
 				PRODUCT_NAME = AlertHandlerDemo;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -441,6 +453,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = voodoo77.AlertHandlerDemo;
 				PRODUCT_NAME = AlertHandlerDemo;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -448,10 +461,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = AlertHandlerDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = voodoo77.AlertHandlerDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlertHandlerDemo.app/AlertHandlerDemo";
 			};
 			name = Debug;
@@ -460,10 +476,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = AlertHandlerDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = voodoo77.AlertHandlerDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlertHandlerDemo.app/AlertHandlerDemo";
 			};
 			name = Release;
@@ -475,6 +493,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = voodoo77.AlertHandlerDemoUITests;
 				PRODUCT_NAME = AlertHandlerDemo;
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = AlertHandlerDemo;
 				USES_XCTRUNNER = YES;
 				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
@@ -489,6 +508,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = voodoo77.AlertHandlerDemoUITests;
 				PRODUCT_NAME = AlertHandlerDemo;
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = AlertHandlerDemo;
 				USES_XCTRUNNER = YES;
 				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8E61039A1C9A33850006AA4A /* AlertHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E6103991C9A33850006AA4A /* AlertHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8E6103A21C9A36F80006AA4A /* AlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6103A01C9A36F00006AA4A /* AlertHandler.swift */; };
+		8ED2FE4C1CAEFB5F00C7CA1F /* AlertTextFieldHandlerBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ED2FE4A1CAEFB5F00C7CA1F /* AlertTextFieldHandlerBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8ED2FE4D1CAEFB5F00C7CA1F /* AlertTextFieldHandlerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED2FE4B1CAEFB5F00C7CA1F /* AlertTextFieldHandlerBridge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +18,8 @@
 		8E6103991C9A33850006AA4A /* AlertHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertHandler.h; sourceTree = "<group>"; };
 		8E61039B1C9A33850006AA4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E6103A01C9A36F00006AA4A /* AlertHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHandler.swift; sourceTree = "<group>"; };
+		8ED2FE4A1CAEFB5F00C7CA1F /* AlertTextFieldHandlerBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertTextFieldHandlerBridge.h; sourceTree = "<group>"; };
+		8ED2FE4B1CAEFB5F00C7CA1F /* AlertTextFieldHandlerBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertTextFieldHandlerBridge.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,11 +52,21 @@
 		8E6103981C9A33850006AA4A /* AlertHandler */ = {
 			isa = PBXGroup;
 			children = (
+				8ED2FE451CAE0FA900C7CA1F /* Objective-C */,
 				8E6103A01C9A36F00006AA4A /* AlertHandler.swift */,
 				8E6103991C9A33850006AA4A /* AlertHandler.h */,
 				8E61039B1C9A33850006AA4A /* Info.plist */,
 			);
 			path = AlertHandler;
+			sourceTree = "<group>";
+		};
+		8ED2FE451CAE0FA900C7CA1F /* Objective-C */ = {
+			isa = PBXGroup;
+			children = (
+				8ED2FE4A1CAEFB5F00C7CA1F /* AlertTextFieldHandlerBridge.h */,
+				8ED2FE4B1CAEFB5F00C7CA1F /* AlertTextFieldHandlerBridge.m */,
+			);
+			path = "Objective-C";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -63,6 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E61039A1C9A33850006AA4A /* AlertHandler.h in Headers */,
+				8ED2FE4C1CAEFB5F00C7CA1F /* AlertTextFieldHandlerBridge.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,12 +108,13 @@
 		8E17D6EB1C938A2100775325 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Voodoo77 Studios, Inc.";
 				TargetAttributes = {
 					8E6103961C9A33850006AA4A = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -135,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ED2FE4D1CAEFB5F00C7CA1F /* AlertTextFieldHandlerBridge.m in Sources */,
 				8E6103A21C9A36F80006AA4A /* AlertHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,6 +179,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -184,6 +202,8 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
+				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -207,6 +227,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -222,6 +243,8 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
+				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";
 			};
 			name = Release;
 		};
@@ -243,6 +266,7 @@
 				PRODUCT_NAME = AlertHandler;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
 				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";
@@ -267,6 +291,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = voodoo77.AlertHandler;
 				PRODUCT_NAME = AlertHandler;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 				"VALID_ARCHS[sdk=iphoneos*]" = "arm64 armv7 armv7s";
 				"VALID_ARCHS[sdk=iphonesimulator*]" = "i386 x86_64";

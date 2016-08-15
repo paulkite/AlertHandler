@@ -1,130 +1,219 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11185.3" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="obk-mT-qT7">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11151.4"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Tab Bar Controller-->
+        <scene sceneID="1dU-WC-eBw">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AlertHandlerDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="obk-mT-qT7" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="7dE-Iu-nV1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="E3D-8R-lrw" kind="relationship" relationship="viewControllers" id="3g2-OJ-0h7"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Fh-Lr-uQV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-178" y="636"/>
+        </scene>
+        <!--AlertHandler Demo-->
+        <scene sceneID="oxA-9z-CRW">
+            <objects>
+                <viewController id="QDe-Er-Gfq" customClass="ViewController" customModule="AlertHandlerDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="i18-2s-qnz"/>
+                        <viewControllerLayoutGuide type="bottom" id="YW5-NU-Wjr"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="879-tx-Puw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AlertHandler Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CN7-vV-Jkh">
-                                <rect key="frame" x="204" y="92" width="192.5" height="25.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="skS-iY-QMb">
-                                <rect key="frame" x="20" y="117" width="560" height="71.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YlT-au-rkL">
-                                <rect key="frame" x="20" y="189" width="560" height="222"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="xsb-5J-dCq">
+                                <frame key="frameInset" minX="20" minY="166" width="343" height="268"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zkq-wT-8yy">
-                                        <rect key="frame" x="0.0" y="8" width="560" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2PJ-3t-WsX">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lG-Vm-m8B">
+                                                <accessibility key="accessibilityConfiguration" identifier="present_alert_button"/>
+                                                <state key="normal" title="Present Alert"/>
+                                                <connections>
+                                                    <action selector="handleButtonTap:" destination="QDe-Er-Gfq" eventType="touchUpInside" id="kNz-6s-412"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIV-aG-EPo">
+                                                <accessibility key="accessibilityConfiguration" identifier="present_alert_with_action_button"/>
+                                                <state key="normal" title="Present Alert w/ Action"/>
+                                                <connections>
+                                                    <action selector="handleButtonTap:" destination="QDe-Er-Gfq" eventType="touchUpInside" id="qCQ-6D-6Ld"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIH-Tb-Ebk">
+                                                <accessibility key="accessibilityConfiguration" identifier="present_alert_with_action_plus_textfield_button"/>
+                                                <state key="normal" title="Present Alert w/ Action + Text Field"/>
+                                                <connections>
+                                                    <action selector="handleButtonTap:" destination="QDe-Er-Gfq" eventType="touchUpInside" id="b2I-2V-pRE"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="U6B-oC-k49">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8P-Af-mL8">
+                                                <accessibility key="accessibilityConfiguration" identifier="present_action_sheet_button"/>
+                                                <state key="normal" title="Present Action Sheet"/>
+                                                <connections>
+                                                    <action selector="handleButtonTap:" destination="QDe-Er-Gfq" eventType="touchUpInside" id="o8e-nJ-VAS"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shc-AG-udM">
+                                                <accessibility key="accessibilityConfiguration" identifier="present_action_sheet_button_with_action_button"/>
+                                                <state key="normal" title="Present Action Sheet w/ Action"/>
+                                                <connections>
+                                                    <action selector="handleButtonTap:" destination="QDe-Er-Gfq" eventType="touchUpInside" id="z14-xo-D4j"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SOy-Ee-9TK">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgZ-v7-QaO">
+                                                <accessibility key="accessibilityConfiguration" identifier="present_view_controller_button"/>
+                                                <state key="normal" title="Present View Controller"/>
+                                                <connections>
+                                                    <segue destination="uKT-CS-qNd" kind="presentation" id="lls-bB-25D"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YW5-NU-Wjr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xsb-5J-dCq" secondAttribute="bottom" id="8u1-2J-GHD"/>
+                            <constraint firstItem="xsb-5J-dCq" firstAttribute="leading" secondItem="879-tx-Puw" secondAttribute="leadingMargin" id="Kdc-Z2-8Jp"/>
+                            <constraint firstItem="xsb-5J-dCq" firstAttribute="centerY" secondItem="879-tx-Puw" secondAttribute="centerY" id="Mzl-aw-BEL"/>
+                            <constraint firstItem="xsb-5J-dCq" firstAttribute="centerX" secondItem="879-tx-Puw" secondAttribute="centerX" id="VvB-yv-Mh9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xsb-5J-dCq" secondAttribute="trailing" id="lhS-Bc-43V"/>
+                            <constraint firstItem="xsb-5J-dCq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i18-2s-qnz" secondAttribute="bottom" id="uVu-P4-CxW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="AlertHandler Demo" id="puU-RE-xjg"/>
+                    <connections>
+                        <outlet property="presentActionSheetButton" destination="B8P-Af-mL8" id="E4z-89-vpV"/>
+                        <outlet property="presentActionSheetWithActionButton" destination="Shc-AG-udM" id="DgL-an-Aqt"/>
+                        <outlet property="presentAlertButton" destination="9lG-Vm-m8B" id="0Jf-1C-tFa"/>
+                        <outlet property="presentAlertWithActionButton" destination="JIV-aG-EPo" id="N3P-ai-ROm"/>
+                        <outlet property="presentAlertWithActionPlusTextFieldButton" destination="PIH-Tb-Ebk" id="q5C-KY-Zea"/>
+                        <outlet property="presentViewControllerButton" destination="hgZ-v7-QaO" id="eSs-vg-zdr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NaS-cP-tcg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1354" y="636"/>
+        </scene>
+        <!--Presented View Controller-->
+        <scene sceneID="Ndd-6c-jMa">
+            <objects>
+                <viewController id="ixG-45-PP7" customClass="PresentedViewController" customModule="AlertHandlerDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WOj-g2-cim"/>
+                        <viewControllerLayoutGuide type="bottom" id="MpD-NB-19a"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vOj-zS-RTA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jO8-bx-F8M">
+                                <frame key="frameInset" minX="20" minY="266" width="343" height="68"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xW1-wH-Tc5">
                                         <accessibility key="accessibilityConfiguration" identifier="present_alert_button"/>
                                         <state key="normal" title="Present Alert"/>
                                         <connections>
-                                            <action selector="handleButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aXR-D0-QFs"/>
+                                            <action selector="handleButtonTap:" destination="ixG-45-PP7" eventType="touchUpInside" id="z0i-S8-RRr"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaX-0l-DRz">
-                                        <rect key="frame" x="0.0" y="46" width="560" height="30"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="present_alert_with_action_button"/>
-                                        <state key="normal" title="Present Alert w/ Action"/>
-                                        <connections>
-                                            <action selector="handleButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ouO-ft-NOU"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QhG-tZ-LaO">
-                                        <rect key="frame" x="0.0" y="84" width="560" height="30"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="present_alert_with_action_plus_textfield_button"/>
-                                        <state key="normal" title="Present Alert w/ Action + Text Field"/>
-                                        <connections>
-                                            <action selector="handleButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="svl-Qq-rKS"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4XP-Cc-Wg7">
-                                        <rect key="frame" x="0.0" y="146" width="560" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lcd-9r-yl5">
                                         <accessibility key="accessibilityConfiguration" identifier="present_action_sheet_button"/>
                                         <state key="normal" title="Present Action Sheet"/>
                                         <connections>
-                                            <action selector="handleButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N2E-mZ-ClY"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMe-nB-ZvR">
-                                        <rect key="frame" x="0.0" y="184" width="560" height="30"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="present_action_sheet_button_with_action_button"/>
-                                        <state key="normal" title="Present Action Sheet w/ Action"/>
-                                        <connections>
-                                            <action selector="handleButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sDz-QR-nnH"/>
+                                            <action selector="handleButtonTap:" destination="ixG-45-PP7" eventType="touchUpInside" id="sm1-1c-VUO"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="TaX-0l-DRz" firstAttribute="leading" secondItem="YlT-au-rkL" secondAttribute="leading" id="0Ht-Uz-UfU"/>
-                                    <constraint firstAttribute="trailing" secondItem="TaX-0l-DRz" secondAttribute="trailing" id="0j5-nT-Al9"/>
-                                    <constraint firstItem="Zkq-wT-8yy" firstAttribute="leading" secondItem="YlT-au-rkL" secondAttribute="leading" id="4y4-0j-DWH"/>
-                                    <constraint firstItem="QhG-tZ-LaO" firstAttribute="leading" secondItem="YlT-au-rkL" secondAttribute="leading" id="5II-30-Caf"/>
-                                    <constraint firstItem="TaX-0l-DRz" firstAttribute="top" secondItem="Zkq-wT-8yy" secondAttribute="bottom" constant="8" id="5lb-JQ-BYb"/>
-                                    <constraint firstItem="BMe-nB-ZvR" firstAttribute="top" secondItem="4XP-Cc-Wg7" secondAttribute="bottom" constant="8" id="9xa-Dw-5rY"/>
-                                    <constraint firstItem="4XP-Cc-Wg7" firstAttribute="top" secondItem="QhG-tZ-LaO" secondAttribute="bottom" constant="32" id="CG4-WF-WUI"/>
-                                    <constraint firstItem="BMe-nB-ZvR" firstAttribute="leading" secondItem="YlT-au-rkL" secondAttribute="leading" id="Jbq-JN-Ztb"/>
-                                    <constraint firstItem="Zkq-wT-8yy" firstAttribute="top" secondItem="YlT-au-rkL" secondAttribute="topMargin" id="Mon-bL-Dx1"/>
-                                    <constraint firstItem="QhG-tZ-LaO" firstAttribute="top" secondItem="TaX-0l-DRz" secondAttribute="bottom" constant="8" id="Otl-bC-jUZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="BMe-nB-ZvR" secondAttribute="trailing" id="Rez-3S-ra3"/>
-                                    <constraint firstAttribute="trailing" secondItem="Zkq-wT-8yy" secondAttribute="trailing" id="bvo-sl-mtv"/>
-                                    <constraint firstItem="4XP-Cc-Wg7" firstAttribute="leading" secondItem="YlT-au-rkL" secondAttribute="leading" id="fIx-XN-GQQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="4XP-Cc-Wg7" secondAttribute="trailing" id="gDv-x6-ljQ"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="BMe-nB-ZvR" secondAttribute="bottom" id="mEs-aF-GYN"/>
-                                    <constraint firstAttribute="trailing" secondItem="QhG-tZ-LaO" secondAttribute="trailing" id="xPF-1b-FvE"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l18-Yw-78R">
-                                <rect key="frame" x="20" y="20" width="560" height="72"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="YlT-au-rkL" firstAttribute="top" secondItem="skS-iY-QMb" secondAttribute="bottom" id="0sD-KS-g5G"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="l18-Yw-78R" secondAttribute="trailing" id="4kj-Vh-RGs"/>
-                            <constraint firstItem="skS-iY-QMb" firstAttribute="top" secondItem="CN7-vV-Jkh" secondAttribute="bottom" id="6po-hM-cWw"/>
-                            <constraint firstItem="YlT-au-rkL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="9LN-gf-K2b"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="skS-iY-QMb" secondAttribute="leading" id="IIv-35-bMw"/>
-                            <constraint firstItem="l18-Yw-78R" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Jfr-Rc-BDG"/>
-                            <constraint firstItem="CN7-vV-Jkh" firstAttribute="top" secondItem="l18-Yw-78R" secondAttribute="bottom" id="LjT-no-o1W"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="l18-Yw-78R" secondAttribute="leading" id="XcP-Cc-YpA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="skS-iY-QMb" secondAttribute="trailing" id="a4R-b9-XZ3"/>
-                            <constraint firstItem="l18-Yw-78R" firstAttribute="height" secondItem="skS-iY-QMb" secondAttribute="height" id="asE-Js-RAA"/>
-                            <constraint firstItem="YlT-au-rkL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dfK-r8-beB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YlT-au-rkL" secondAttribute="trailing" id="mYI-Jn-94i"/>
-                            <constraint firstItem="CN7-vV-Jkh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qD7-yA-0Pr"/>
-                            <constraint firstItem="YlT-au-rkL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rd8-Mo-ied"/>
+                            <constraint firstItem="jO8-bx-F8M" firstAttribute="centerX" secondItem="vOj-zS-RTA" secondAttribute="centerX" id="8XY-gx-bM0"/>
+                            <constraint firstItem="jO8-bx-F8M" firstAttribute="centerY" secondItem="vOj-zS-RTA" secondAttribute="centerY" id="Iac-eM-Ghd"/>
+                            <constraint firstItem="jO8-bx-F8M" firstAttribute="leading" secondItem="vOj-zS-RTA" secondAttribute="leadingMargin" id="XqK-kL-Ud8"/>
+                            <constraint firstItem="MpD-NB-19a" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jO8-bx-F8M" secondAttribute="bottom" id="m0y-qK-53i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jO8-bx-F8M" secondAttribute="trailing" id="msm-II-jZh"/>
+                            <constraint firstItem="jO8-bx-F8M" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WOj-g2-cim" secondAttribute="bottom" id="pvL-Eb-cE3"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Presented View Controller" id="vj1-oe-oMQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="3vD-cV-OXO">
+                            <connections>
+                                <action selector="handleButtonTap:" destination="ixG-45-PP7" id="plD-hu-r7c"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="presentActionSheetButton" destination="4XP-Cc-Wg7" id="Xbt-Li-vJb"/>
-                        <outlet property="presentActionSheetWithActionButton" destination="BMe-nB-ZvR" id="Vs3-V3-RKc"/>
-                        <outlet property="presentAlertButton" destination="Zkq-wT-8yy" id="NML-Fb-Flh"/>
-                        <outlet property="presentAlertWithActionButton" destination="TaX-0l-DRz" id="EGS-sV-xxZ"/>
-                        <outlet property="presentAlertWithActionPlusTextFieldButton" destination="QhG-tZ-LaO" id="7fH-ve-2AR"/>
+                        <outlet property="doneButton" destination="3vD-cV-OXO" id="8Qz-gm-qWH"/>
+                        <outlet property="presentActionSheetButton" destination="Lcd-9r-yl5" id="fJV-QD-mRX"/>
+                        <outlet property="presentAlertButton" destination="xW1-wH-Tc5" id="wwF-8p-vEK"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xU5-3N-8g6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2807" y="636"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UdH-0k-Sy2">
+            <objects>
+                <navigationController id="uKT-CS-qNd" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="cLd-gp-4cT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ixG-45-PP7" kind="relationship" relationship="rootViewController" id="8yF-QQ-rTg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MaL-Sk-5gd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2098" y="636"/>
+        </scene>
+        <!--Tab-->
+        <scene sceneID="rmT-Af-Rxs">
+            <objects>
+                <navigationController id="E3D-8R-lrw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Tab" id="Fny-Dt-Jug"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="M34-Lb-LCU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="QDe-Er-Gfq" kind="relationship" relationship="rootViewController" id="Sqk-Gk-EXD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xrc-YO-4nO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="579" y="636"/>
         </scene>
     </scenes>
 </document>

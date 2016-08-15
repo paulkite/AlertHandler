@@ -55,4 +55,20 @@ class AlertHandlerDemoUITests: XCTestCase {
         app.buttons["present_action_sheet_button_with_action_button"].tap()
         app.sheets["Title"].collectionViews.buttons["Title"].tap()
     }
+
+    func testAlertOnPresentedViewController() {
+        let app = XCUIApplication()
+        app.buttons["present_view_controller_button"].tap()
+        app.buttons["present_alert_button"].tap()
+        app.alerts["Title"].collectionViews.buttons["Cancel"].tap()
+        app.navigationBars["Presented View Controller"].buttons["Done"].tap()
+    }
+
+    func testActionSheetOnPresentedViewController() {
+        let app = XCUIApplication()
+        app.buttons["present_view_controller_button"].tap()
+        app.buttons["present_action_sheet_button"].tap()
+        app.sheets["Title"].buttons["Cancel"].tap()
+        app.navigationBars["Presented View Controller"].buttons["Done"].tap()
+    }
 }
