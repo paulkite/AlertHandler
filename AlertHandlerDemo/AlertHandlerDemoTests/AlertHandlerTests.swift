@@ -16,13 +16,13 @@ class AlertHandlerTests: XCTestCase {
         let title = "Title"
         let message = "Message"
         let actions = [
-            UIAlertAction(title: "First", style: .Default, handler: nil),
-            UIAlertAction(title: "Second", style: .Default, handler: nil)
+            UIAlertAction(title: "First", style: .default, handler: nil),
+            UIAlertAction(title: "Second", style: .default, handler: nil)
         ]
         let textFieldHandlers: [AlertTextFieldHandler] = [
             {$0.placeholder = "placeholder"
              $0.keyboardType = .URL},
-            {$0.secureTextEntry = true}
+            {$0.isSecureTextEntry = true}
         ]
         
         let alertController = AlertHandler.displayAlert(
@@ -43,9 +43,9 @@ class AlertHandlerTests: XCTestCase {
         
         XCTAssertEqual(alertController!.textFields!.first!.placeholder, "placeholder")
         XCTAssertEqual(alertController!.textFields!.first!.keyboardType, UIKeyboardType.URL)
-        XCTAssertTrue(alertController!.textFields!.last!.secureTextEntry)
+        XCTAssertTrue(alertController!.textFields!.last!.isSecureTextEntry)
 
-        alertController?.dismissViewControllerAnimated(false, completion: nil)
+        alertController?.dismiss(animated: false, completion: nil)
     }
     
     func testAlertDealloc() {
@@ -55,13 +55,15 @@ class AlertHandlerTests: XCTestCase {
             let controller = AlertHandler.displayAlert(title: "Title", message: "Message")
             alertController = controller
             
-            let expectation = self.expectationWithDescription("Alert Dismissal Completed Expecation")
+            let expectation = self.expectation(description: "Alert Dismissal Completed Expecation")
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                alertController?.dismiss(animated: true) {
+                    expectation.fulfill()
+                }
+            }
             
-            alertController?.dismissViewControllerAnimated(true, completion: {
-                expectation.fulfill()
-            })
-            
-            self.waitForExpectationsWithTimeout(3.0, handler: nil)
+            self.waitForExpectations(timeout: 3.0, handler: nil)
         }
         
         XCTAssertNil(alertController)

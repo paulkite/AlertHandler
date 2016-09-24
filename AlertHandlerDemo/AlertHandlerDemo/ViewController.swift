@@ -17,27 +17,27 @@ class ViewController: UIViewController {
     @IBOutlet var presentActionSheetWithActionButton: UIButton!
     @IBOutlet var presentViewControllerButton: UIButton!
 
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 
-    @IBAction func handleButtonTap(sender: AnyObject) {
+    @IBAction func handleButtonTap(_ sender: AnyObject) {
         if sender as? UIButton == self.presentAlertButton {
-            AlertHandler.displayAlert(title: "Title", message: "Message")
+            _ = AlertHandler.displayAlert(title: "Title", message: "Message")
         } else if sender as? UIButton == self.presentAlertWithActionButton {
-            AlertHandler.displayAlert(
+            _ = AlertHandler.displayAlert(
                 title: "Title",
                 message: "Message",
                 actions: [
-                    UIAlertAction(title: "Title", style: .Default, handler: nil)
+                    UIAlertAction(title: "Title", style: .default, handler: nil)
                 ]
             )
         } else if sender as? UIButton == self.presentAlertWithActionPlusTextFieldButton {
-            AlertHandler.displayAlert(
+            _ = AlertHandler.displayAlert(
                 title: "Title",
                 message: "Message",
                 actions: [
-                    UIAlertAction(title: "Title", style: .Default, handler: nil)
+                    UIAlertAction(title: "Title", style: .default, handler: nil)
                 ],
                 textFieldHandlers: [
                     { (textField) -> Void in
@@ -47,13 +47,13 @@ class ViewController: UIViewController {
             )
             
         } else if sender as? UIButton == self.presentActionSheetButton {
-            AlertHandler.displayActionSheet(title: "Title", message: "Message", actions: nil, fromView: sender as? UIView)
+            _ = AlertHandler.displayActionSheet(title: "Title", message: "Message", actions: nil, fromView: sender as? UIView)
         } else if sender as? UIButton == self.presentActionSheetWithActionButton {
-            AlertHandler.displayActionSheet(
+            _ = AlertHandler.displayActionSheet(
                 title: "Title",
                 message: "Message",
                 actions: [
-                    UIAlertAction(title: "Title", style: .Default, handler: nil)
+                    UIAlertAction(title: "Title", style: .default, handler: nil)
                 ],
                 fromView: sender as? UIView
             )

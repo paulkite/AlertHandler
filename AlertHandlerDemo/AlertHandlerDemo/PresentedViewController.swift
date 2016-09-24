@@ -14,13 +14,13 @@ class PresentedViewController: UIViewController {
     @IBOutlet var presentActionSheetButton: UIButton!
     @IBOutlet var presentAlertButton: UIButton!
 
-    @IBAction func handleButtonTap(sender: AnyObject) {
+    @IBAction func handleButtonTap(_ sender: AnyObject) {
         if sender as? UIButton == self.presentAlertButton {
-            AlertHandler.displayAlert(title: "Title", message: "Message")
+            _ = AlertHandler.displayAlert(title: "Title", message: "Message")
         } else if sender as? UIButton == self.presentActionSheetButton {
-            AlertHandler.displayActionSheet(title: "Title", message: "Message", actions: nil, fromView: sender as? UIView)
+            _ = AlertHandler.displayActionSheet(title: "Title", message: "Message", actions: nil, fromView: sender as? UIView)
         } else if sender as? UIBarButtonItem == self.doneButton {
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }

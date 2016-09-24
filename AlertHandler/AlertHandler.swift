@@ -10,10 +10,10 @@ import UIKit
 import ObjectiveC
 
 extension UIAlertController {
-    private func displayAnimated(animated animated: Bool, tintColor: UIColor?, completion: (() -> Void)?) {
-        let displayWindow = UIApplication.sharedApplication().keyWindow
+    fileprivate func displayAnimated(animated: Bool, tintColor: UIColor?, completion: (() -> Void)?) {
+        let displayWindow = UIApplication.shared.keyWindow
 
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad && self.preferredStyle == .ActionSheet {
+        if UIDevice.current.userInterfaceIdiom == .pad && self.preferredStyle == .actionSheet {
             self.popoverPresentationController?.sourceView = displayWindow?.rootViewController?.view
         }
 
@@ -29,7 +29,7 @@ extension UIAlertController {
             }
         }
 
-        viewController?.presentViewController(self, animated: animated, completion: completion)
+        viewController?.present(self, animated: animated, completion: completion)
 
         self.view.tintColor = tintColor
     }
@@ -49,11 +49,11 @@ extension AlertHandler {
      - Returns: The presented UIAlertController instance.
      */
 
-    @objc public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]?, textFieldHandlerBridges: [AlertTextFieldHandlerBridge]?, tintColor: UIColor?, completion: ((UIAlertController?) -> Void)?) -> UIAlertController? {
+    @objc public class func displayAlert(title: String?, message: String?, actions: [UIAlertAction]?, textFieldHandlerBridges: [AlertTextFieldHandlerBridge]?, tintColor: UIColor?, completion: ((UIAlertController?) -> Void)?) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
-            alertStyle: .Alert,
+            alertStyle: .alert,
             actions: actions,
             textFieldHandlers: textFieldHandlerBridges?.map({return $0.handler}),
             fromView:  nil,
@@ -63,7 +63,7 @@ extension AlertHandler {
     }
 }
 
-@objc public class AlertHandler: NSObject {
+@objc open class AlertHandler: NSObject {
     /**
      Presents an action sheet with the supplied arguments.
 
@@ -77,11 +77,11 @@ extension AlertHandler {
      - Returns: The presented UIAlertController instance.
      */
 
-    @objc public class func displayActionSheet(title title: String?, message: String?, actions: [UIAlertAction]? = nil, fromView: UIView? = nil, tintColor: UIColor? = nil, completion: ((UIAlertController?) -> Void)? = nil) -> UIAlertController? {
+    @objc open class func displayActionSheet(title: String?, message: String?, actions: [UIAlertAction]? = nil, fromView: UIView? = nil, tintColor: UIColor? = nil, completion: ((UIAlertController?) -> Void)? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
-            alertStyle: .ActionSheet,
+            alertStyle: .actionSheet,
             actions: actions,
             textFieldHandlers: nil,
             fromView: fromView,
@@ -103,11 +103,11 @@ extension AlertHandler {
      - Returns: The presented UIAlertController instance.
      */
 
-    @nonobjc public class func displayAlert(title title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: [AlertTextFieldHandler]? = nil, tintColor: UIColor? = nil, completion: ((UIAlertController?) -> Void)? = nil) -> UIAlertController? {
+    @nonobjc open class func displayAlert(title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: [AlertTextFieldHandler]? = nil, tintColor: UIColor? = nil, completion: ((UIAlertController?) -> Void)? = nil) -> UIAlertController? {
         return self.display(
             title: title,
             message: message,
-            alertStyle: .Alert,
+            alertStyle: .alert,
             actions: actions,
             textFieldHandlers: textFieldHandlers,
             fromView:  nil,
@@ -116,25 +116,25 @@ extension AlertHandler {
         )
     }
     
-    private class func display(title title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: [AlertTextFieldHandler]?, fromView: UIView?, tintColor: UIColor?, completion: ((UIAlertController?) -> Void)?) -> UIAlertController? {
+    fileprivate class func display(title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: [AlertTextFieldHandler]?, fromView: UIView?, tintColor: UIColor?, completion: ((UIAlertController?) -> Void)?) -> UIAlertController? {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
 
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad && alertStyle == .ActionSheet {
+        if UIDevice.current.userInterfaceIdiom == .pad && alertStyle == .actionSheet {
             guard let presentFromView = fromView, let presenter = alertController.popoverPresentationController else {
                 return nil
             }
 
-            presenter.sourceRect = alertController.view.convertRect(presentFromView.bounds, fromView: presentFromView)
-            alertController.modalPresentationStyle = .Popover
+            presenter.sourceRect = alertController.view.convert(presentFromView.bounds, from: presentFromView)
+            alertController.modalPresentationStyle = .popover
         }
 
-        if let handlers = textFieldHandlers?.enumerate() {
+        if let handlers = textFieldHandlers?.enumerated() {
             for (_, handler) in handlers {
-                alertController.addTextFieldWithConfigurationHandler(handler)
+                alertController.addTextField(configurationHandler: handler)
             }
         }
         
-        let hasCancelAction = actions?.contains({return $0.style == .Cancel}) ?? false
+        let hasCancelAction = actions?.contains(where: {return $0.style == .cancel}) ?? false
 
         if let actions = actions {
             for action in actions {
@@ -157,9 +157,9 @@ extension AlertHandler {
         return alertController
     }
     
-    private class func UIKitLocalizedString(string: String) -> String {
-        let bundle = NSBundle(forClass: UIApplication.self)
-        let value = bundle.localizedStringForKey(string, value: string, table: nil)
+    fileprivate class func UIKitLocalizedString(_ string: String) -> String {
+        let bundle = Bundle(for: UIApplication.self)
+        let value = bundle.localizedString(forKey: string, value: string, table: nil)
         
         if value.characters.count > 0 {
             return value
@@ -168,10 +168,10 @@ extension AlertHandler {
         return string
     }
     
-    public class func cancelAction(handler: ((UIAlertAction) -> Void)?) -> UIAlertAction {
+    open class func cancelAction(_ handler: ((UIAlertAction) -> Void)?) -> UIAlertAction {
         return UIAlertAction(
             title: self.UIKitLocalizedString("Cancel"),
-            style: .Cancel,
+            style: .cancel,
             handler: handler
         )
     }

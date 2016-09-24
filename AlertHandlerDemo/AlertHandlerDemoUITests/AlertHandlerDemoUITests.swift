@@ -21,46 +21,67 @@ class AlertHandlerDemoUITests: XCTestCase {
     func testAlert() {
         let app = XCUIApplication()
         app.buttons["present_alert_button"].tap()
-        app.alerts["Title"].collectionViews.buttons["Cancel"].tap()
+        app.alerts["Title"].buttons["Cancel"].tap()
     }
     
     func testAlertWithAction() {
         let app = XCUIApplication()
-        app.buttons["present_alert_with_action_button"].tap()
-        app.alerts["Title"].collectionViews.buttons["Title"].tap()
+        let presentAlertWithActionButtonButton = app.buttons["present_alert_with_action_button"]
+        presentAlertWithActionButtonButton.tap()
+        
+        let titleAlert = app.alerts["Title"]
+        titleAlert.buttons["Title"].tap()
+        presentAlertWithActionButtonButton.tap()
+        titleAlert.buttons["Cancel"].tap()
+
     }
     
     func testAlertWithActionPlusTextField() {
         let app = XCUIApplication()
-        app.buttons["present_alert_with_action_plus_textfield_button"].tap()
+        let presentAlertWithActionPlusTextfieldButtonButton = app.buttons["present_alert_with_action_plus_textfield_button"]
+        presentAlertWithActionPlusTextfieldButtonButton.tap()
         
-        let collectionViewsQuery = app.alerts["Title"].collectionViews
-        collectionViewsQuery.textFields["placeholder"].typeText("Test")
-        collectionViewsQuery.buttons["Title"].tap()
+        let titleAlert = app.alerts["Title"]
+        let placeholderTextField = titleAlert.collectionViews.textFields["placeholder"]
+        placeholderTextField.typeText("Test")
+        titleAlert.buttons["Title"].tap()
+        presentAlertWithActionPlusTextfieldButtonButton.tap()
+        placeholderTextField.typeText("Test")
+        titleAlert.buttons["Cancel"].tap()
     }
     
     func testActionSheet() {
         let app = XCUIApplication()
         app.buttons["present_action_sheet_button"].tap()
 
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+        if UIDevice.current.userInterfaceIdiom == .phone {
             app.sheets["Title"].buttons["Cancel"].tap()
         } else {
-            app.childrenMatchingType(.Window).elementBoundByIndex(3).childrenMatchingType(.Other).elementBoundByIndex(1).childrenMatchingType(.Other).elementBoundByIndex(1).childrenMatchingType(.Image).elementBoundByIndex(0).tap()
+            app.otherElements["PopoverDismissRegion"].tap()
         }
     }
     
     func testActionSheetWithAction() {
         let app = XCUIApplication()
-        app.buttons["present_action_sheet_button_with_action_button"].tap()
-        app.sheets["Title"].collectionViews.buttons["Title"].tap()
+        let presentActionSheetButtonWithActionButtonButton = app.buttons["present_action_sheet_button_with_action_button"]
+        presentActionSheetButtonWithActionButtonButton.tap()
+        
+        let titleSheet = app.sheets["Title"]
+        titleSheet.buttons["Title"].tap()
+        presentActionSheetButtonWithActionButtonButton.tap()
+
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            titleSheet.buttons["Cancel"].tap()
+        } else {
+            app.otherElements["PopoverDismissRegion"].tap()
+        }
     }
 
     func testAlertOnPresentedViewController() {
         let app = XCUIApplication()
         app.buttons["present_view_controller_button"].tap()
         app.buttons["present_alert_button"].tap()
-        app.alerts["Title"].collectionViews.buttons["Cancel"].tap()
+        app.alerts["Title"].buttons["Cancel"].tap()
         app.navigationBars["Presented View Controller"].buttons["Done"].tap()
     }
 
@@ -68,7 +89,13 @@ class AlertHandlerDemoUITests: XCTestCase {
         let app = XCUIApplication()
         app.buttons["present_view_controller_button"].tap()
         app.buttons["present_action_sheet_button"].tap()
-        app.sheets["Title"].buttons["Cancel"].tap()
+
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            app.sheets["Title"].buttons["Cancel"].tap()
+        } else {
+            app.otherElements["PopoverDismissRegion"].tap()
+        }
+
         app.navigationBars["Presented View Controller"].buttons["Done"].tap()
     }
 }
