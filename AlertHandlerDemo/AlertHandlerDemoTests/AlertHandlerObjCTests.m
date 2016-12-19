@@ -79,9 +79,11 @@
 
         XCTestExpectation *expectation = [self expectationWithDescription:@"Alert Dismissal Completed Expecation"];
 
-        [alertController dismissViewControllerAnimated:YES completion:^{
-            [expectation fulfill];
-        }];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [alertController dismissViewControllerAnimated:YES completion:^{
+                [expectation fulfill];
+            }];
+        });
         
         [self waitForExpectationsWithTimeout:3.0 handler: nil];
     }
