@@ -161,7 +161,7 @@ extension AlertHandler {
         let bundle = Bundle(for: UIApplication.self)
         let value = bundle.localizedString(forKey: string, value: string, table: nil)
         
-        if value.characters.count > 0 {
+        if value.count > 0 {
             return value
         }
         
