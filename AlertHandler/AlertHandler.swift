@@ -168,7 +168,7 @@ extension AlertHandler {
         return string
     }
     
-    open class func cancelAction(_ handler: ((UIAlertAction) -> Void)?) -> UIAlertAction {
+    @objc open class func cancelAction(_ handler: ((UIAlertAction) -> Void)?) -> UIAlertAction {
         return UIAlertAction(
             title: self.UIKitLocalizedString("Cancel"),
             style: .cancel,
