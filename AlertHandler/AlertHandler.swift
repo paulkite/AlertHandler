@@ -77,6 +77,7 @@ extension AlertHandler {
      - Returns: The presented UIAlertController instance.
      */
 
+    @discardableResult
     @objc open class func displayActionSheet(title: String?, message: String?, actions: [UIAlertAction]? = nil, fromView: UIView? = nil, tintColor: UIColor? = nil, completion: ((UIAlertController?) -> Void)? = nil) -> UIAlertController? {
         return self.display(
             title: title,
@@ -103,6 +104,7 @@ extension AlertHandler {
      - Returns: The presented UIAlertController instance.
      */
 
+    @discardableResult
     @nonobjc open class func displayAlert(title: String?, message: String?, actions: [UIAlertAction]? = nil, textFieldHandlers: [AlertTextFieldHandler]? = nil, tintColor: UIColor? = nil, completion: ((UIAlertController?) -> Void)? = nil) -> UIAlertController? {
         return self.display(
             title: title,
