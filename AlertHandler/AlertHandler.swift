@@ -118,7 +118,7 @@ extension AlertHandler {
         )
     }
     
-    fileprivate class func display(title: String?, message: String?, alertStyle: UIAlertControllerStyle, actions: [UIAlertAction]?, textFieldHandlers: [AlertTextFieldHandler]?, fromView: UIView?, tintColor: UIColor?, completion: ((UIAlertController?) -> Void)?) -> UIAlertController? {
+    fileprivate class func display(title: String?, message: String?, alertStyle: UIAlertController.Style, actions: [UIAlertAction]?, textFieldHandlers: [AlertTextFieldHandler]?, fromView: UIView?, tintColor: UIColor?, completion: ((UIAlertController?) -> Void)?) -> UIAlertController? {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: alertStyle)
 
         if UIDevice.current.userInterfaceIdiom == .pad && alertStyle == .actionSheet {
